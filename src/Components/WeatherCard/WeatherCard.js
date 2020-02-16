@@ -13,8 +13,7 @@ const StyledDiv = styled.div`
   box-shadow: 0 0 30px -20px #999999;
   width: 100%;
   margin-top: 25px;
-
-  section {
+  Ŕ section {
     display: flex;
     flex-direction: column;
     justify-content: center;

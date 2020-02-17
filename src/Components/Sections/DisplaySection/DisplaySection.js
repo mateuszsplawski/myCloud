@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import WeatherInfo from "../../WeatherCard/WeatherCard";
+import WeatherCard from "../../WeatherCard/WeatherCard";
 import Swiper from "swiper";
 import "swiper/css/swiper.min.css";
 
@@ -27,7 +27,10 @@ const DisplaySection = ({ list }) => {
     if (list.length > 1 && !swiperInit) {
       const mySwiper = new Swiper(".swiper-container", {
         grabCursor: true,
-
+        spaceBetween: 100,
+        speed: 500,
+        observer: true,
+        resistanceRatio: 0.5,
         pagination: {
           el: ".swiper-pagination",
           dynamicBullets: true
@@ -42,7 +45,7 @@ const DisplaySection = ({ list }) => {
         <div className="swiper-wrapper">
           {list.length > 0
             ? list.map((listItem, id) => (
-                <WeatherInfo list={list} cityData={listItem} key={id} />
+                <WeatherCard list={list} cityData={listItem} key={id} />
               ))
             : undefined}
         </div>

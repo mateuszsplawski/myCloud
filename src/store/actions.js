@@ -1,0 +1,3 @@
+export const INPUT_CHANGE = "INPUT_CHANGE";
+export const CLEAN_INPUT = "CLEAN_INPUT";
+export const WEATHER_SEARCH = "WEATHER_SEARCH";

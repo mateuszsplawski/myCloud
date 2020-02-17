@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
 
 const StyledSection = styled.form`
   display: flex;
@@ -94,4 +95,17 @@ const SearchSection = ({
   );
 };
 
-export default SearchSection;
+const mapStateToProps = state => {
+  return { searchedCity: state.searchedCity };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleCitySearch: e => {
+      const action = { type: "INPUT_CHANGE", value: e.target.value };
+      dispatch(action);
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchSection);

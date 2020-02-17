@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DisplaySection from "./Sections/DisplaySection/DisplaySection";
 import SearchSection from "./Sections/SearchSection/SearchSection";
 import HeroImg from "./HeroImg/HeroImg";
+import { connect } from "react-redux";
 
 const StyledMain = styled.main`
   @import url("https://fonts.googleapis.com/css?family=Exo:800&display=swap");
@@ -31,38 +32,10 @@ const StyledMain = styled.main`
   }
 `;
 
-const WeatherApp = () => {
-  const [searchedCity, setSearchedCity] = useState("");
-  const [city, setCity] = useState("");
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    const key = "852bef2232b1fa115bee70b5c83d1bb2";
-    const lang = "pl";
-    if (city !== "") {
-      fetch(
-        `//api.openweathermap.org/data/2.5/weather?lang=${lang}&q=${city}&APPID=${key}`
-      )
-        .then(response =>
-          response.ok
-            ? response.json()
-            : alert("Nieprawidłowa nazwa lokalizacji, spróbuj ponownie")
-        )
-        .then(data =>
-          data !== undefined ? setList([data, ...list]) : undefined
-        )
-        .then(console.log(list));
-    }
-  }, [city]);
-
-  const handleCitySearch = e => {
-    setSearchedCity(e.target.value);
-  };
-
+const WeatherApp = ({ handleCitySearch, list, searchedCity }) => {
   const handleSearchClick = e => {
     e.preventDefault();
-    searchedCity === "" ? alert("Wpisz nazwę miasta") : setCity(searchedCity);
-    setSearchedCity("");
+    handleCitySearch(list, searchedCity);
   };
 
   return (
@@ -70,14 +43,42 @@ const WeatherApp = () => {
       <h1>
         <span>my</span>Cloud
       </h1>
-      <SearchSection
-        handleCitySearch={handleCitySearch}
-        searchedCity={searchedCity}
-        handleSearchClick={handleSearchClick}
-      />
+      <SearchSection handleSearchClick={handleSearchClick} />
       {!list.length > 0 ? <HeroImg /> : <DisplaySection list={list} />}
     </StyledMain>
   );
 };
 
-export default WeatherApp;
+const mapStateToProps = state => {
+  return {
+    searchedCity: state.searchedCity,
+    list: state.list
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleCitySearch: (list, searchedCity) => {
+      const key = "852bef2232b1fa115bee70b5c83d1bb2";
+      const lang = "pl";
+      if (searchedCity !== "") {
+        fetch(
+          `//api.openweathermap.org/data/2.5/weather?lang=${lang}&q=${searchedCity}&APPID=${key}`
+        )
+          .then(response =>
+            response.ok
+              ? response.json()
+              : alert("Nieprawidłowa nazwa lokalizacji, spróbuj ponownie")
+          )
+          .then(data =>
+            data !== undefined
+              ? dispatch({ type: "WEATHER_SEARCH", list: [data, ...list] })
+              : undefined
+          )
+          .then(dispatch({ type: "CLEAN_INPUT" }));
+      }
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherApp);

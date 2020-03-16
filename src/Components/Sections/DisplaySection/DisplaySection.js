@@ -18,6 +18,8 @@ const StyledSection = styled.section`
 
   @media (max-width: 700px) {
     max-width: 350px;
+    width: 100%;
+    padding: unset;
   }
 `;
 
@@ -28,6 +30,7 @@ const DisplaySection = ({ list }) => {
       const mySwiper = new Swiper(".swiper-container", {
         grabCursor: true,
         spaceBetween: 100,
+        centeredSlides: true,
         speed: 500,
         observer: true,
         resistanceRatio: 0.5,

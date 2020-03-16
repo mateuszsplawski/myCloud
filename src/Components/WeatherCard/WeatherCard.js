@@ -68,7 +68,6 @@ const StyledDiv = styled.div`
 
   @media (max-width: 700px) {
     flex-direction: column;
-    max-width: 300px;
     align-items: center;
   }
 `;

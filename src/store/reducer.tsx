@@ -17,6 +17,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         searchedCity: action.value
       };
+    case actionTypes.API_CALL_FULFILLED:
+      return {
+        ...state,
+        list: action.payload ? [...state.list, action.payload] : [...state.list]
+      };
+    case actionTypes.API_CALL_REJECTED:
+      return alert("Spróbuj ponownie.");
     case actionTypes.WEATHER_SEARCH:
       return {
         ...state,

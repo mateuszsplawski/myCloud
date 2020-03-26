@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
+import { handleCitySearch, callAPI } from "../../../store/actionCreators";
 
 const StyledSection = styled.form`
   display: flex;
@@ -72,17 +73,24 @@ const StyledSection = styled.form`
   }
 `;
 
-interface props {
-  handleCitySearch: Function;
-  searchedCity: String;
-  handleSearchClick: Function;
+interface SearchSectionProps {
+  handleCitySearch: any;
+  searchedCity: string;
+  handleAPICall: any;
+  clearInput: any;
 }
 
-const SearchSection = ({
+const SearchSection: React.SFC<SearchSectionProps> = ({
   handleCitySearch,
   searchedCity,
-  handleSearchClick
+  handleAPICall,
+  clearInput
 }) => {
+  const handleSearchClick = e => {
+    e.preventDefault();
+    handleAPICall(searchedCity);
+    clearInput();
+  };
   return (
     <>
       <StyledSection>
@@ -108,9 +116,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleCitySearch: e => {
-      const action = { type: "INPUT_CHANGE", value: e.target.value };
-      dispatch(action);
-    }
+      dispatch(handleCitySearch(e));
+    },
+    handleAPICall: searchedCity => {
+      dispatch(callAPI(searchedCity));
+    },
+    clearInput: () => dispatch({ type: "CLEAN_INPUT" })
   };
 };
 

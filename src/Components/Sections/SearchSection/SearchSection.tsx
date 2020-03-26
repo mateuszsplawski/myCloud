@@ -72,6 +72,12 @@ const StyledSection = styled.form`
   }
 `;
 
+interface props {
+  handleCitySearch: Function;
+  searchedCity: String;
+  handleSearchClick: Function;
+}
+
 const SearchSection = ({
   handleCitySearch,
   searchedCity,

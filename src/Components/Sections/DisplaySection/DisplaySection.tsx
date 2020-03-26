@@ -27,7 +27,7 @@ const DisplaySection = ({ list }) => {
   const [swiperInit, setSwiperInit] = useState(false);
   useEffect(() => {
     if (list.length > 1 && !swiperInit) {
-      const mySwiper = new Swiper(".swiper-container", {
+      const settings = {
         grabCursor: true,
         spaceBetween: 100,
         centeredSlides: true,
@@ -38,7 +38,9 @@ const DisplaySection = ({ list }) => {
           el: ".swiper-pagination",
           dynamicBullets: true
         }
-      });
+      };
+
+      const mySwiper = new Swiper(".swiper-container", settings);
       setSwiperInit(true);
     } else return undefined;
   }, [list.length]);

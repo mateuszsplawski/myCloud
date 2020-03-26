@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import DisplaySection from "./Sections/DisplaySection/DisplaySection";
 import SearchSection from "./Sections/SearchSection/SearchSection";
 import HeroImg from "./HeroImg/HeroImg";
 import { connect } from "react-redux";
+import Logo from "./Logo/Logo";
 
 const StyledMain = styled.main`
   @import url("https://fonts.googleapis.com/css?family=Exo:800&display=swap");
@@ -16,20 +17,6 @@ const StyledMain = styled.main`
   background: url("https://images.pexels.com/photos/695657/pexels-photo-695657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
     center center;
   background-size: cover;
-
-  > h1 {
-    font-family: "Exo", sans-serif;
-    color: rgb(245, 245, 245);
-    text-shadow: 0 0 1px rgb(245, 245, 245);
-    font-size: 35px;
-    display: flex;
-    flex-direction: column;
-    span {
-      font-size: 16px;
-      position: relative;
-      top: 6px;
-    }
-  }
 `;
 
 const WeatherApp = ({ handleCitySearch, list, searchedCity }) => {
@@ -40,11 +27,9 @@ const WeatherApp = ({ handleCitySearch, list, searchedCity }) => {
 
   return (
     <StyledMain>
-      <h1>
-        <span>my</span>Cloud
-      </h1>
+      <Logo />
       <SearchSection handleSearchClick={handleSearchClick} />
-      {!list.length > 0 ? <HeroImg /> : <DisplaySection list={list} />}
+      {list.length === 0 ? <HeroImg /> : <DisplaySection list={list} />}
     </StyledMain>
   );
 };

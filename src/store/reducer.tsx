@@ -1,6 +1,11 @@
 import * as actionTypes from "./actions";
 
-const initialState = {
+interface initialStateInterface {
+  searchedCity: string;
+  list: Array<Object>;
+}
+
+const initialState: initialStateInterface = {
   searchedCity: "",
   list: []
 };

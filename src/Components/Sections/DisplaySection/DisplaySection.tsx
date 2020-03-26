@@ -16,7 +16,7 @@ const StyledSection = styled.section`
     height: 100%;
   }
 
-  @media (max-width: 700px) {
+  ${({ theme }) => theme.media.tablet} {
     max-width: 350px;
     width: 100%;
     padding: unset;
@@ -39,7 +39,6 @@ const DisplaySection = ({ list }) => {
           dynamicBullets: true
         }
       };
-
       const mySwiper = new Swiper(".swiper-container", settings);
       setSwiperInit(true);
     } else return undefined;
@@ -50,7 +49,7 @@ const DisplaySection = ({ list }) => {
         <div className="swiper-wrapper">
           {list.length > 0
             ? list.map((listItem, id) => (
-                <WeatherCard list={list} cityData={listItem} key={id} />
+                <WeatherCard cityData={listItem} key={id} />
               ))
             : undefined}
         </div>

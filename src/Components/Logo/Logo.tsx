@@ -3,16 +3,19 @@ import styled from "styled-components";
 
 const StyledWrapper = styled.header`
   h1 {
-    font-family: "Exo", sans-serif;
+    font-family: ${({ theme }) => theme.fonts.secondary};
     color: rgb(245, 245, 245);
     text-shadow: 0 0 1px rgb(245, 245, 245);
-    font-size: 35px;
+    font-size: 60px;
     display: flex;
     flex-direction: column;
+    position: relative;
     span {
-      font-size: 16px;
-      position: relative;
-      top: 6px;
+      font-size: 26px;
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      transform: rotate(-15deg);
     }
   }
 `;

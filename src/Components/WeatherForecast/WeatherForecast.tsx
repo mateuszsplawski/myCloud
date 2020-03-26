@@ -39,7 +39,7 @@ const StyledUl = styled.ul`
     }
   }
 
-  @media (max-width: 700px) {
+  ${({ theme }) => theme.media.tablet} {
     margin: 15px 0 0 0;
     border-top: 2px solid grey;
     width: 100%;

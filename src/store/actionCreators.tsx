@@ -22,3 +22,9 @@ export const callAPI = searchedCity => {
       .then(data => (data !== undefined ? data : undefined))
   };
 };
+
+export const cleanInput = () => {
+  return {
+    type: "CLEAN_INPUT"
+  };
+};

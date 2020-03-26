@@ -3,19 +3,23 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { handleCitySearch, callAPI } from "../../../store/actionCreators";
+import {
+  handleCitySearch,
+  callAPI,
+  cleanInput
+} from "../../../store/actionCreators";
 
 const StyledSection = styled.form`
   display: flex;
   width: 500px;
 
   input {
-    background: #fff;
+    background: ${({ theme }) => theme.colors.white};
     width: 100%;
-    color: black;
+    color: ${({ theme }) => theme.colors.black};
     padding: 15px;
     font-size: 16px;
-    border: 1px solid #777;
+    border: 1px solid ${({ theme }) => theme.colors.grey};
     border-radius: 25px;
     border-right: none;
     border-top-right-radius: unset;
@@ -23,29 +27,29 @@ const StyledSection = styled.form`
     outline: none;
 
     :valid {
-      border-color: rgb(148, 193, 220);
-      box-shadow: -5px 1px 30px -10px rgb(148, 193, 220);
+      border-color: ${({ theme }) => theme.colors.blue};
+      box-shadow: -5px 1px 30px -10px ${({ theme }) => theme.colors.blue};
       & + button {
-        border-color: rgb(148, 193, 220);
-        box-shadow: 15px 1px 30px -10px rgb(148, 193, 220);
+        border-color: ${({ theme }) => theme.colors.blue};
+        box-shadow: 15px 1px 30px -10px ${({ theme }) => theme.colors.blue};
       }
     }
 
     :focus {
-      border-color: rgb(148, 193, 220);
-      box-shadow: -5px 1px 30px -10px rgb(148, 193, 220);
+      border-color: ${({ theme }) => theme.colors.blue};
+      box-shadow: -5px 1px 30px -10px ${({ theme }) => theme.colors.blue};
 
       & + button {
-        border-color: rgb(148, 193, 220);
-        box-shadow: 15px 1px 30px -10px rgb(148, 193, 220);
+        border-color: ${({ theme }) => theme.colors.blue};
+        box-shadow: 15px 1px 30px -10px ${({ theme }) => theme.colors.blue};
       }
     }
   }
 
   button {
-    background: white;
-    border: 1px solid #777;
-    color: black;
+    background: ${({ theme }) => theme.colors.white};
+    border: 1px solid ${({ theme }) => theme.colors.grey};
+    color: ${({ theme }) => theme.colors.black};
     border-left: none;
     border-radius: 25px;
     border-top-left-radius: unset;
@@ -56,7 +60,7 @@ const StyledSection = styled.form`
     outline: none;
 
     :hover {
-      color: rgb(148, 193, 220);
+      color: ${({ theme }) => theme.colors.blue};
     }
   }
 
@@ -121,7 +125,7 @@ const mapDispatchToProps = dispatch => {
     handleAPICall: searchedCity => {
       dispatch(callAPI(searchedCity));
     },
-    clearInput: () => dispatch({ type: "CLEAN_INPUT" })
+    clearInput: () => dispatch(cleanInput())
   };
 };
 

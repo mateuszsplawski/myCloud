@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.API_CALL_FULFILLED:
       return {
         ...state,
-        list: action.payload ? [...state.list, action.payload] : [...state.list]
+        list: action.payload ? [action.payload, ...state.list] : [...state.list]
       };
     case actionTypes.API_CALL_REJECTED:
       return alert("Spróbuj ponownie.");

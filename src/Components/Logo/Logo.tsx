@@ -4,8 +4,8 @@ import styled from "styled-components";
 const StyledWrapper = styled.header`
   h1 {
     font-family: ${({ theme }) => theme.fonts.secondary};
-    color: rgb(245, 245, 245);
-    text-shadow: 0 0 1px rgb(245, 245, 245);
+    color: ${({ theme }) => theme.colors.darkWhite};
+    text-shadow: 0 0 1px ${({ theme }) => theme.colors.darkWhite};
     font-size: 60px;
     display: flex;
     flex-direction: column;

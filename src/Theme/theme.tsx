@@ -1,6 +1,7 @@
 const theme: Object = {
   colors: {
     white: "rgb(255, 255, 255)",
+    darkWhite: "rgb(245, 245, 245)",
     black: "rgb(0, 0, 0)",
     grey: "rgb(170, 170, 170)",
     blue: "rgb(148, 193, 220)"

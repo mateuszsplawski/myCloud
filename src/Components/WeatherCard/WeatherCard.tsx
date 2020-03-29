@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import WeatherMoreInfo from "../WeatherForecast/WeatherForecast";
+import WeatherForecast from "../WeatherForecast/WeatherForecast";
 import WeatherIcon from "../WeatherIcon/WeatherIcon";
+import AirPollutionInfo from "../AirPollutionInfo/AirPollutionInfo";
+import Buttons from "../Buttons/Buttons";
+import WeatherInfo from "../WeatherInfo/WeatherInfo";
 
 const StyledWrapper = styled.div`
   position: relative;
@@ -14,59 +17,35 @@ const StyledWrapper = styled.div`
   width: 100%;
   margin-top: 25px;
 
-  .weather {
-    &__description {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+  .weather__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-      h1 {
-        font-family: "Exo", sans-serif;
-        text-shadow: 0 0 1px rgb(245, 245, 245);
-        font-weight: lighter;
-        font-size: 28px;
-      }
-
-      h2 {
-        font-weight: lighter;
-        font-size: 14px;
-        text-transform: uppercase;
-      }
-
-      h3 {
-        margin-top: 5px;
-        font-weight: bold;
-        font-size: 32px;
-      }
-
-      div {
-        height: 120px;
-        width: 150px;
-      }
+    h1 {
+      font-family: "Exo", sans-serif;
+      text-shadow: 0 0 1px rgb(245, 245, 245);
+      font-weight: lighter;
+      font-size: 28px;
     }
 
-    &__info {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 10px;
-      width: 35%;
+    h2 {
+      font-weight: lighter;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
 
-      li {
-        width: 50%;
-        padding: 5px;
-        list-style: none;
-        font-weight: bolder;
-        p {
-          text-transform: uppercase;
-          color: grey;
-          font-weight: normal;
-          font-size: 12px;
-        }
-      }
+    h3 {
+      margin-top: 5px;
+      font-weight: bold;
+      font-size: 32px;
+    }
+
+    div {
+      height: 120px;
+      width: 150px;
     }
   }
 
@@ -77,28 +56,22 @@ const StyledWrapper = styled.div`
   ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
     align-items: center;
-
-    .weather {
-      &__info {
-        justify-content: center;
-        border-top: 2px solid grey;
-        width: unset;
-
-        li {
-          border-bottom: 1px solid grey;
-          padding: 5px 0 5px 0;
-        }
-      }
-    }
   }
 `;
 
 interface WeatherCardInterface {
-  cityData: any;
+  weatherData: any;
+  airPollutionData: any;
+  forecastData: any;
 }
 
-const WeatherCard: React.SFC<WeatherCardInterface> = ({ cityData }) => {
-  const { name, weather, main, sys, id, wind } = cityData;
+const WeatherCard: React.SFC<WeatherCardInterface> = ({
+  weatherData,
+  forecastData,
+  airPollutionData
+}) => {
+  const { name, weather, main } = weatherData;
+  const [buttonSwitched, setButtonSwitched] = useState(false);
   return (
     <StyledWrapper className="swiper-slide weather">
       <section className="weather__description">
@@ -107,42 +80,13 @@ const WeatherCard: React.SFC<WeatherCardInterface> = ({ cityData }) => {
         <h3>{(main.temp - 273.15).toFixed()}°</h3>
         <WeatherIcon id={weather[0].icon} />
       </section>
-      <WeatherMoreInfo cityID={id} />
-      <ul className="weather__info">
-        <li>
-          <p>Wschód sł.</p>
-          {new Date(sys.sunrise * 1000).toLocaleTimeString()}
-        </li>
-        <li>
-          <p>Zachód sł.</p>
-          {new Date(sys.sunset * 1000).toLocaleTimeString()}
-        </li>
-        <li>
-          <p>T. odczuwalna</p>
-          {(main.feels_like - 273.15).toFixed()}
-          °C
-        </li>
-        <li>
-          <p>Wilgotność</p>
-          {main.humidity}%
-        </li>
-        <li>
-          <p>Ciśnienie</p>
-          {main.pressure}hPa
-        </li>
-        <li>
-          <p>Wiatr</p>
-          {wind.speed}m/s
-        </li>
-        <li>
-          <p>T. Max</p>
-          {(cityData.main.temp_max - 273.15).toFixed()}°C
-        </li>
-        <li>
-          <p>T. Min</p>
-          {(cityData.main.temp_min - 273.15).toFixed()}°C
-        </li>
-      </ul>
+      <WeatherInfo weatherData={weatherData} />
+      {!buttonSwitched ? (
+        <WeatherForecast forecastData={forecastData} />
+      ) : (
+        <AirPollutionInfo airPollutionData={airPollutionData} />
+      )}
+      <Buttons handleClick={setButtonSwitched} />
     </StyledWrapper>
   );
 };

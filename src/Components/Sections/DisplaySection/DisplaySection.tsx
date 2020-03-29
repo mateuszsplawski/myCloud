@@ -49,7 +49,12 @@ const DisplaySection = ({ list }) => {
         <div className="swiper-wrapper">
           {list.length > 0
             ? list.map((listItem, id) => (
-                <WeatherCard cityData={listItem} key={id} />
+                <WeatherCard
+                  weatherData={listItem[0]}
+                  forecastData={listItem[1]}
+                  airPollutionData={listItem[2]}
+                  key={id}
+                />
               ))
             : undefined}
         </div>

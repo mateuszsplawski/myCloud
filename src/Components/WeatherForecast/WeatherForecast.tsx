@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import WeatherIcon from "../WeatherIcon/WeatherIcon";
 
@@ -48,26 +48,11 @@ const StyledUl = styled.ul`
   }
 `;
 
-const WeatherForecast = ({ cityID }) => {
-  const [moreInfo, setMoreInfo] = useState(undefined);
-  useEffect(() => {
-    const key = "852bef2232b1fa115bee70b5c83d1bb2";
-    const lang = "pl";
-    const fetchMoreInfo = async () => {
-      await fetch(
-        `//api.openweathermap.org/data/2.5/forecast?lang=${lang}&id=${cityID}&APPID=${key}`
-      )
-        .then(response => response.json())
-        .then(data => setMoreInfo(data))
-        .catch(err => console.log(err));
-    };
-    fetchMoreInfo();
-  }, []);
-
+const WeatherForecast = ({ forecastData }) => {
   return (
-    <StyledUl className={moreInfo ? `activeID_${cityID}` : ""}>
-      {moreInfo
-        ? moreInfo.list
+    <StyledUl>
+      {forecastData
+        ? forecastData.list
             .filter((listItem, id) => id % 7 === 0)
             .map((listItem, id) => (
               <li key={id}>

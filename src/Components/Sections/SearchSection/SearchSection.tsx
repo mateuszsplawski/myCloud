@@ -8,6 +8,7 @@ import {
   callAPI,
   cleanInput
 } from "../../../store/actionCreators";
+import AirPollutionInfo from "../../AirPollutionInfo/AirPollutionInfo";
 
 const StyledSection = styled.form`
   display: flex;

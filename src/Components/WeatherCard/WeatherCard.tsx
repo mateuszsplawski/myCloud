@@ -15,6 +15,7 @@ const StyledWrapper = styled.div`
   padding: 35px;
   box-shadow: 0 0 30px -20px #999999;
   width: 100%;
+  min-height: 350px;
   margin-top: 25px;
 
   .weather__description {
@@ -23,7 +24,7 @@ const StyledWrapper = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    width: calc(100% / 3);
     h1 {
       font-family: "Exo", sans-serif;
       text-shadow: 0 0 1px rgb(245, 245, 245);
@@ -86,7 +87,7 @@ const WeatherCard: React.SFC<WeatherCardInterface> = ({
       ) : (
         <AirPollutionInfo airPollutionData={airPollutionData} />
       )}
-      <Buttons handleClick={setButtonSwitched} />
+      <Buttons active={buttonSwitched} handleClick={setButtonSwitched} />
     </StyledWrapper>
   );
 };

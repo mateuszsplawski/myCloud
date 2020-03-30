@@ -9,7 +9,7 @@ const StyledUl = styled.ul`
   align-items: center;
   padding: 5px 10px;
   order: 1;
-  width: 30%;
+  width: calc(100% / 3);
 
   li {
     position: relative;

@@ -8,12 +8,14 @@ const StyledSection = styled.section`
   display: flex;
   padding: 5vh 5vw;
   justify-content: center;
+  height: 100%;
   align-items: center;
   max-width: 1000px;
 
   .swiper-container {
     width: 100%;
     height: 100%;
+    padding: 0 0 20px 0;
   }
 
   ${({ theme }) => theme.media.tablet} {

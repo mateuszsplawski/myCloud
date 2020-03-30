@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledWrapper = styled.div``;
+const StyledWrapper = styled.div`
+  padding: 5px 10px;
+  order: 1;
+  width: calc(100% / 3);
+`;
 
 export interface AirPollutionInfoProps {
   airPollutionData: any;
@@ -10,10 +14,15 @@ export interface AirPollutionInfoProps {
 const AirPollutionInfo: React.SFC<AirPollutionInfoProps> = ({
   airPollutionData
 }) => {
+  const {
+    data: { aqi, iaqi, idx }
+  } = airPollutionData;
   return (
     <StyledWrapper>
-      <ul>data</ul>
-      {console.log(airPollutionData)}
+      <ul>
+        <li>jakość: {aqi}</li>
+      </ul>
+      {console.log(iaqi)}
     </StyledWrapper>
   );
 };

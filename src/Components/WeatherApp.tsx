@@ -11,7 +11,8 @@ const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 50px 0 0 0;
+  position: relative;
   width: 100vw;
   min-height: 100vh;
   background: url("https://images.pexels.com/photos/695657/pexels-photo-695657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")

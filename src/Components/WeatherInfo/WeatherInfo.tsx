@@ -7,7 +7,7 @@ const StyledWrapper = styled.ul`
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
-  width: 35%;
+  width: calc(100% / 3);
 
   li {
     width: 50%;

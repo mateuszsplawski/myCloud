@@ -3,11 +3,17 @@ import * as actionTypes from "./actions";
 interface initialStateInterface {
   searchedCity: string;
   list: Array<Object>;
+  fetchingData: Boolean;
+  searchedCityList: Array<String>;
+  sliderInitialized: Boolean;
 }
 
 const initialState: initialStateInterface = {
   searchedCity: "",
-  list: []
+  list: [],
+  fetchingData: false,
+  searchedCityList: [],
+  sliderInitialized: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,7 +26,15 @@ const reducer = (state = initialState, action) => {
     case actionTypes.API_CALL_FULFILLED:
       return {
         ...state,
-        list: action.payload ? [action.payload, ...state.list] : [...state.list]
+        list: action.payload
+          ? [action.payload, ...state.list]
+          : [...state.list],
+        fetchingData: false
+      };
+    case actionTypes.API_CALL_PENDING:
+      return {
+        ...state,
+        fetchingData: true
       };
     case actionTypes.API_CALL_REJECTED:
       return alert("Spróbuj ponownie.");
@@ -33,6 +47,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         searchedCity: ""
+      };
+
+    case actionTypes.SEARCHEDCITY_LIST_UPDATE:
+      return {
+        ...state,
+        searchedCityList: [...state.searchedCityList, action.searchedCity]
+      };
+    case actionTypes.SLIDER_INIT:
+      return {
+        ...state,
+        sliderInitialized: true
       };
     default:
       return state;

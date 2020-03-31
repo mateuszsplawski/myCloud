@@ -1,18 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import {
-  handleCitySearch,
-  callAPI,
-  cleanInput
-} from "../../../store/actionCreators";
-import AirPollutionInfo from "../../AirPollutionInfo/AirPollutionInfo";
+import { handleCitySearch } from "../../../store/actionCreators";
+import SearchButton from "../../SearchButton/SearchButton";
 
 const StyledSection = styled.form`
   display: flex;
   width: 500px;
+  height: 50px;
+  position: relative;
 
   input {
     background: ${({ theme }) => theme.colors.white};
@@ -47,32 +43,13 @@ const StyledSection = styled.form`
     }
   }
 
-  button {
-    background: ${({ theme }) => theme.colors.white};
-    border: 1px solid ${({ theme }) => theme.colors.grey};
-    color: ${({ theme }) => theme.colors.black};
-    border-left: none;
-    border-radius: 25px;
-    border-top-left-radius: unset;
-    border-bottom-left-radius: unset;
-    padding: 5px 20px;
-    font-size: 20px;
-    cursor: pointer;
-    outline: none;
-
-    :hover {
-      color: ${({ theme }) => theme.colors.blue};
-    }
-  }
-
   @media (max-width: 550px) {
     width: 100%;
     padding: 0 20px;
   }
 
   @media (max-width: 340px) {
-    input,
-    button {
+    input {
       font-size: 14px;
     }
   }
@@ -81,21 +58,12 @@ const StyledSection = styled.form`
 interface SearchSectionProps {
   handleCitySearch: any;
   searchedCity: string;
-  handleAPICall: any;
-  clearInput: any;
 }
 
 const SearchSection: React.SFC<SearchSectionProps> = ({
   handleCitySearch,
-  searchedCity,
-  handleAPICall,
-  clearInput
+  searchedCity
 }) => {
-  const handleSearchClick = e => {
-    e.preventDefault();
-    handleAPICall(searchedCity);
-    clearInput();
-  };
   return (
     <>
       <StyledSection>
@@ -106,9 +74,7 @@ const SearchSection: React.SFC<SearchSectionProps> = ({
           onChange={handleCitySearch}
           type="text"
         />
-        <button onClick={handleSearchClick}>
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
+        <SearchButton />
       </StyledSection>
     </>
   );
@@ -122,11 +88,7 @@ const mapDispatchToProps = dispatch => {
   return {
     handleCitySearch: e => {
       dispatch(handleCitySearch(e));
-    },
-    handleAPICall: searchedCity => {
-      dispatch(callAPI(searchedCity));
-    },
-    clearInput: () => dispatch(cleanInput())
+    }
   };
 };
 

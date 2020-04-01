@@ -17,7 +17,7 @@ const StyledSection = styled.section`
   }
 `;
 
-const DisplaySection = () => {
+const DisplaySection: React.FC = () => {
   return (
     <StyledSection>
       <Slider />

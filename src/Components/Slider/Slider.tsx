@@ -19,7 +19,7 @@ export interface SliderProps {
   isSliderInitialized: Boolean;
 }
 
-const Slider: React.FunctionComponent<SliderProps> = ({
+const Slider: React.FC<SliderProps> = ({
   list,
   initializeSlider,
   isSliderInitialized

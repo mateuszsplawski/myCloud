@@ -1,4 +1,8 @@
-const fetchDataFunc = searchedCity => {
+interface fetchDataFuncInterface {
+  searchedCity: String;
+}
+
+const fetchDataFunc: Function = searchedCity => {
   const weatherKey = "852bef2232b1fa115bee70b5c83d1bb2";
   const airPollutionKey = "2a7ad43ceffccfbc61ddb362d481ed3b9f1dfcdb";
   const lang = "pl";

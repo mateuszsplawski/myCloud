@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import DisplaySection from "./Sections/DisplaySection/DisplaySection";
 import SearchSection from "./Sections/SearchSection/SearchSection";
-import HeroImg from "./HeroImg/HeroImg";
+import Hero from "./Hero/Hero";
 import { connect } from "react-redux";
 import Logo from "./Logo/Logo";
 import { ErrorPopup } from "./ErrorPopup/ErrorPopup";
@@ -17,17 +17,31 @@ const StyledMain = styled.main`
   width: 100vw;
   height: 100%;
   min-height: 100vh;
-  background: url("https://images.pexels.com/photos/695657/pexels-photo-695657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-    center center;
-  background-size: cover;
+  background: linear-gradient(to right, #1f61ed, #2f80ed);
 `;
 
-const WeatherApp = ({ list }) => {
+interface WeatherAppInterface {
+  list: Array<[]>;
+}
+
+const WeatherApp: React.FC<WeatherAppInterface> = ({ list }) => {
+  useEffect(() => {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    navigator.geolocation.getCurrentPosition(
+      elo => console.log(elo),
+      () => console.log("nope"),
+      options
+    );
+  }, []);
   return (
     <StyledMain>
       <Logo />
       <SearchSection />
-      {list.length === 0 ? <HeroImg /> : <DisplaySection />}
+      {list.length === 0 ? <Hero /> : <DisplaySection />}
     </StyledMain>
   );
 };

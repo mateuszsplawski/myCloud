@@ -24,7 +24,11 @@ const StyledWrapper = styled.div`
   height: 100%;
 `;
 
-const WeatherIcon = ({ id }) => {
+interface WeatherIconInterface {
+  id: String;
+}
+
+const WeatherIcon: React.FC<WeatherIconInterface> = ({ id }) => {
   const weatherIcons = [
     { id: "01d", weather: <Weather01d viewbox={"0 5 65 50"} /> },
     { id: "01n", weather: <Weather01n viewbox={"0 5 65 50"} /> },

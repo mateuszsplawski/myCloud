@@ -57,10 +57,7 @@ export interface ButtonsProps {
   active: Boolean;
 }
 
-const Buttons: React.FunctionComponent<ButtonsProps> = ({
-  active,
-  handleClick
-}) => {
+const Buttons: React.FC<ButtonsProps> = ({ active, handleClick }) => {
   return (
     <StyledWrapper active={active}>
       <button onClick={() => handleClick(false)}>Prognoza pogody</button>

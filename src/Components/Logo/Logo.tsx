@@ -20,7 +20,7 @@ const StyledWrapper = styled.header`
   }
 `;
 
-const Logo: React.SFC<Object> = () => {
+const Logo: React.FC = () => {
   return (
     <StyledWrapper>
       <h1>

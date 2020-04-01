@@ -46,7 +46,7 @@ export interface SearchButtonProps {
   searchedCityList: Array<String>;
 }
 
-const SearchButton: React.FunctionComponent<SearchButtonProps> = ({
+const SearchButton: React.FC<SearchButtonProps> = ({
   handleAPICall,
   clearInput,
   fetchingData,

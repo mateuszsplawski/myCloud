@@ -60,7 +60,7 @@ interface SearchSectionProps {
   searchedCity: string;
 }
 
-const SearchSection: React.SFC<SearchSectionProps> = ({
+const SearchSection: React.FC<SearchSectionProps> = ({
   handleCitySearch,
   searchedCity
 }) => {

@@ -41,9 +41,7 @@ interface ErrorPopupInterface {
   message: String;
 }
 
-export const ErrorPopup: React.FunctionComponent<ErrorPopupInterface> = ({
-  message
-}) => {
+export const ErrorPopup: React.FC<ErrorPopupInterface> = ({ message }) => {
   return (
     <StyledWrapper>
       <div className="errorModal">

@@ -66,7 +66,7 @@ interface WeatherCardInterface {
   forecastData: any;
 }
 
-const WeatherCard: React.SFC<WeatherCardInterface> = ({
+const WeatherCard: React.FC<WeatherCardInterface> = ({
   weatherData,
   forecastData,
   airPollutionData

@@ -42,7 +42,7 @@ const StyledWrapper = styled.div`
 
 export interface LoadingCircleProps {}
 
-const LoadingCircle: React.FunctionComponent<LoadingCircleProps> = () => {
+const LoadingCircle: React.FC<LoadingCircleProps> = () => {
   return (
     <StyledWrapper className="lds-ring">
       <div></div>

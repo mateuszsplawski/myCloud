@@ -68,10 +68,13 @@ const StyledWrapper = styled.div`
 `;
 
 export interface AirPollutionInfoProps {
-  airPollutionData: any;
+  airPollutionData: {
+    status: Object;
+    data: any;
+  };
 }
 
-const AirPollutionInfo: React.SFC<AirPollutionInfoProps> = ({
+const AirPollutionInfo: React.FC<AirPollutionInfoProps> = ({
   airPollutionData
 }) => {
   const { status, data } = airPollutionData;

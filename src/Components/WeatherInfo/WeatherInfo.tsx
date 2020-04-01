@@ -38,9 +38,7 @@ export interface WeatherInfoProps {
   weatherData: any;
 }
 
-const WeatherInfo: React.FunctionComponent<WeatherInfoProps> = ({
-  weatherData
-}) => {
+const WeatherInfo: React.FC<WeatherInfoProps> = ({ weatherData }) => {
   const { main, sys, wind } = weatherData;
 
   return (

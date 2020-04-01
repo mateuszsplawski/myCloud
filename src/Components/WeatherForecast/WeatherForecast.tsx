@@ -48,7 +48,13 @@ const StyledUl = styled.ul`
   }
 `;
 
-const WeatherForecast = ({ forecastData }) => {
+interface WeatherForecastInterface {
+  forecastData: any;
+}
+
+const WeatherForecast: React.FC<WeatherForecastInterface> = ({
+  forecastData
+}) => {
   return (
     <StyledUl>
       {forecastData

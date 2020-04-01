@@ -5,6 +5,7 @@ import SearchSection from "./Sections/SearchSection/SearchSection";
 import HeroImg from "./HeroImg/HeroImg";
 import { connect } from "react-redux";
 import Logo from "./Logo/Logo";
+import { ErrorPopup } from "./ErrorPopup/ErrorPopup";
 
 const StyledMain = styled.main`
   @import url("https://fonts.googleapis.com/css?family=Exo:800&display=swap");
@@ -14,6 +15,7 @@ const StyledMain = styled.main`
   padding: 50px 0 0 0;
   position: relative;
   width: 100vw;
+  height: 100%;
   min-height: 100vh;
   background: url("https://images.pexels.com/photos/695657/pexels-photo-695657.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
     center center;
@@ -25,7 +27,7 @@ const WeatherApp = ({ list }) => {
     <StyledMain>
       <Logo />
       <SearchSection />
-      {list.length === 0 ? <HeroImg /> : <DisplaySection list={list} />}
+      {list.length === 0 ? <HeroImg /> : <DisplaySection />}
     </StyledMain>
   );
 };

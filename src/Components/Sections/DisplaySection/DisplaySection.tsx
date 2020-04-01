@@ -17,10 +17,10 @@ const StyledSection = styled.section`
   }
 `;
 
-const DisplaySection = ({ list }) => {
+const DisplaySection = () => {
   return (
     <StyledSection>
-      <Slider list={list} />
+      <Slider />
     </StyledSection>
   );
 };

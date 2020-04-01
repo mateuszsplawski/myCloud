@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import WeatherCard from "./../WeatherCard/WeatherCard";
-import Swiper from "swiper";
 import "swiper/css/swiper.min.css";
-import { Mousewheel } from "swiper/js/swiper.esm";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { sliderInit } from "./../../store/actionCreators";
@@ -18,14 +16,16 @@ const StyledWrapper = styled.div`
 export interface SliderProps {
   list: Array<Object>;
   initializeSlider: Function;
+  isSliderInitialized: Boolean;
 }
 
 const Slider: React.FunctionComponent<SliderProps> = ({
   list,
-  initializeSlider
+  initializeSlider,
+  isSliderInitialized
 }) => {
   useEffect(() => {
-    if (list.length > 1) {
+    if (list.length > 1 && !isSliderInitialized) {
       initializeSlider();
     } else return undefined;
   }, [list.length]);
@@ -50,7 +50,10 @@ const Slider: React.FunctionComponent<SliderProps> = ({
 };
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    isSliderInitialized: state.sliderInitialized,
+    list: state.list
+  };
 };
 
 const mapDispatchToProps = dispatch => {

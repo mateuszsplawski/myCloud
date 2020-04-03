@@ -4,7 +4,8 @@ const theme: Object = {
     darkWhite: "rgb(245, 245, 245)",
     black: "rgb(0, 0, 0)",
     grey: "rgb(170, 170, 170)",
-    blue: "rgba(102, 160, 232, 1)"
+    blue: "rgba(102, 160, 232, 1)",
+    yellow: "rgb(242, 219, 74)"
   },
   fonts: {
     secondary: `"Exo", sans-serif`

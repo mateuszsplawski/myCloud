@@ -60,7 +60,7 @@ const SearchButton: React.FC<SearchButtonProps> = ({
       alert("Już wyszukałeś pogodę dla Tego miasta.");
       clearInput();
     } else {
-      handleAPICall(searchedCity);
+      handleAPICall(searchedCity, null);
       updateSearchedCityList(searchedCity);
       clearInput();
     }
@@ -82,9 +82,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleAPICall: searchedCity => {
+    handleAPICall: (searchedCity, userLocation) => {
       searchedCity !== ""
-        ? dispatch(callAPI(searchedCity))
+        ? dispatch(callAPI(searchedCity, userLocation))
         : alert("Musisz wpisać nazwę miasta!");
     },
     clearInput: () => dispatch(cleanInput()),

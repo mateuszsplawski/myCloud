@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import DisplaySection from "./Sections/DisplaySection/DisplaySection";
 import SearchSection from "./Sections/SearchSection/SearchSection";
-import Hero from "./Hero/Hero";
+import HeroSection from "./Sections//HeroSection/HeroSection";
 import { connect } from "react-redux";
 import Logo from "./Logo/Logo";
 import { ErrorPopup } from "./ErrorPopup/ErrorPopup";
@@ -25,23 +25,10 @@ interface WeatherAppInterface {
 }
 
 const WeatherApp: React.FC<WeatherAppInterface> = ({ list }) => {
-  useEffect(() => {
-    var options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-    navigator.geolocation.getCurrentPosition(
-      elo => console.log(elo),
-      () => console.log("nope"),
-      options
-    );
-  }, []);
   return (
     <StyledMain>
       <Logo />
-      <SearchSection />
-      {list.length === 0 ? <Hero /> : <DisplaySection />}
+      {list.length === 0 ? <HeroSection /> : <DisplaySection />}
     </StyledMain>
   );
 };

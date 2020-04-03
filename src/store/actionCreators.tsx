@@ -1,5 +1,6 @@
 import fetchDataFunc from "../Functions/fetchDataFunc";
 import initializeSliderFunc from "../Functions/initializeSliderFunc";
+import getGeolocationFunc from "../Functions/getGeolocationFunc";
 
 export const handleCitySearch = e => {
   return {
@@ -12,6 +13,13 @@ export const sliderInit = () => {
   initializeSliderFunc();
   return {
     type: "SLIDER_INIT"
+  };
+};
+
+export const storeUserLocation = () => {
+  return {
+    type: "STORE_USER_LOCATION",
+    payload: getGeolocationFunc().then(data => data.coords)
   };
 };
 
@@ -28,10 +36,10 @@ export const cleanInput = () => {
   };
 };
 
-export const callAPI = searchedCity => {
+export const callAPI = (searchedCity, userLocation) => {
   return {
     type: "API_CALL",
-    payload: fetchDataFunc(searchedCity)
+    payload: fetchDataFunc(searchedCity, userLocation)
       .then(res => res)
       .catch(
         err => new Error(`Wystąpił błąd podczas pobierania danych. ${err}`)

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Slider from "../../Slider/Slider";
+import SearchSection from "../SearchSection/SearchSection";
 
 const StyledSection = styled.section`
   display: flex;
@@ -19,9 +20,12 @@ const StyledSection = styled.section`
 
 const DisplaySection: React.FC = () => {
   return (
-    <StyledSection>
-      <Slider />
-    </StyledSection>
+    <>
+      <SearchSection />
+      <StyledSection>
+        <Slider />
+      </StyledSection>
+    </>
   );
 };
 

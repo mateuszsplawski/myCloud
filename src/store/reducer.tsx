@@ -6,6 +6,8 @@ interface initialStateInterface {
   fetchingData: Boolean;
   searchedCityList: Array<String>;
   sliderInitialized: Boolean;
+  userLocation: {};
+  fetchingLocationData: boolean;
 }
 
 const initialState: initialStateInterface = {
@@ -13,7 +15,9 @@ const initialState: initialStateInterface = {
   list: [],
   fetchingData: false,
   searchedCityList: [],
-  sliderInitialized: false
+  sliderInitialized: false,
+  userLocation: undefined,
+  fetchingLocationData: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -58,6 +62,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         sliderInitialized: true
+      };
+    case actionTypes.STORE_USER_LOCATION_FULFILLED:
+      return {
+        ...state,
+        userLocation: {
+          longitude: action.payload.longitude,
+          latitude: action.payload.latitude
+        },
+        fetchingLocationData: true
       };
     default:
       return state;

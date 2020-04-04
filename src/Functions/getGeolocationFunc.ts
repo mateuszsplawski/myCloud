@@ -1,8 +1,8 @@
 const getGeolocationFunc = () => {
   const options = {
     enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
+    timeout: 10000,
+    maximumAge: 5000,
   };
 
   return new Promise<{ coords: {} }>((resolve, reject) => {

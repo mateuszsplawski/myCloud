@@ -15,10 +15,10 @@ const StyledWrapper = styled.div`
     position: absolute;
     width: 30px;
     height: 30px;
-    border: 4px solid ${({ theme }) => theme.colors.blue};
+    border: 4px solid ${({ theme }) => theme.colors.yellow};
     border-radius: 50%;
     animation: lds-ring 0.6s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${({ theme }) => theme.colors.blue} transparent transparent
+    border-color: ${({ theme }) => theme.colors.yellow} transparent transparent
       transparent;
   }
   .lds-ring div:nth-child(1) {
@@ -40,11 +40,9 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export interface LoadingCircleProps {}
-
-const LoadingCircle: React.FC<LoadingCircleProps> = () => {
+const LoadingCircle: React.FC = () => {
   return (
-    <StyledWrapper className="lds-ring">
+    <StyledWrapper className="lds-ring loading">
       <div></div>
       <div></div>
       <div></div>

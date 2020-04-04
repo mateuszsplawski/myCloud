@@ -4,38 +4,56 @@ import styled from "styled-components";
 const StyledWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
+  justify-content: center;
+  height: 100%;
   width: calc(100% / 3);
 
   li {
     width: 50%;
-    padding: 5px;
     list-style: none;
     font-weight: bolder;
+    padding: 15px 0;
+    font-size: ${({ theme }) => theme.fonts.m};
+
     p {
       text-transform: uppercase;
-      color: grey;
+      color: ${({ theme }) => theme.colors.darkGrey};
       font-weight: normal;
-      font-size: 12px;
+      font-size: ${({ theme }) => theme.fonts.s};
     }
   }
 
-  ${({ theme }) => theme.media.tablet} {
-    justify-content: center;
-    border-top: 2px solid grey;
-    width: unset;
+  /* MEDIA QUERIES */
 
-    li {
-      border-bottom: 1px solid grey;
-      padding: 5px 0 5px 0;
-    }
+  ${({ theme }) => theme.media.tablet} {
+    width: 50%;
+  }
+
+  ${({ theme }) => theme.media.tabletSmall} {
+    width: 100%;
+    margin: 50px 0 0 0;
+    text-align: center;
   }
 `;
 
 export interface WeatherInfoProps {
-  weatherData: any;
+  weatherData: {
+    main: {
+      feels_like: number;
+      humidity: number;
+      pressure: number;
+      temp_max: number;
+      temp_min: number;
+    };
+    sys: {
+      sunrise: number;
+      sunset: number;
+    };
+    wind: {
+      speed: number;
+    };
+  };
 }
 
 const WeatherInfo: React.FC<WeatherInfoProps> = ({ weatherData }) => {

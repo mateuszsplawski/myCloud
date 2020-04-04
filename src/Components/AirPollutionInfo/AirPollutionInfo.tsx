@@ -24,11 +24,11 @@ const StyledWrapper = styled.div`
       align-items: center;
       flex-direction: column;
       text-transform: uppercase;
-      color: grey;
-      font-size: 14px;
+      color: ${({ theme }) => theme.colors.darkGrey};
+      font-size: ${({ theme }) => theme.fonts.m};
 
       span {
-        font-size: 22px;
+        font-size: ${({ theme }) => theme.fonts.xl};
         font-weight: bolder;
         display: block;
         align-items: center;
@@ -50,14 +50,14 @@ const StyledWrapper = styled.div`
       li {
         margin: 10px;
         text-transform: uppercase;
-        color: grey;
-        font-size: 14px;
+        color: ${({ theme }) => theme.colors.darkGrey};
+        font-size: ${({ theme }) => theme.fonts.s};
         display: flex;
         flex-direction: column;
         text-align: center;
 
         span {
-          font-size: 18px;
+          font-size: ${({ theme }) => theme.fonts.l};
           color: ${({ theme }) => theme.colors.black};
           margin: 5px;
           font-weight: bolder;
@@ -65,17 +65,37 @@ const StyledWrapper = styled.div`
       }
     }
   }
+
+  /* MEDIA QUERIES */
+
+  ${({ theme }) => theme.media.tablet} {
+    margin: 45px 0 0 0;
+    width: 100%;
+  }
 `;
 
 export interface AirPollutionInfoProps {
   airPollutionData: {
-    status: Object;
-    data: any;
+    status: string;
+    data: {
+      iaqi: {
+        no2: {
+          v: number;
+        };
+        c: {
+          v: number;
+        };
+        co: {
+          v: number;
+        };
+      };
+      aqi: string;
+    };
   };
 }
 
 const AirPollutionInfo: React.FC<AirPollutionInfoProps> = ({
-  airPollutionData
+  airPollutionData,
 }) => {
   const { status, data } = airPollutionData;
   return (
@@ -87,25 +107,21 @@ const AirPollutionInfo: React.FC<AirPollutionInfoProps> = ({
           </li>
           <div>
             {data.iaqi.co ? (
-              <li>
+              <li className="air__co">
                 CO
                 <span>{data.iaqi.co.v}</span>
               </li>
-            ) : (
-              undefined
-            )}
+            ) : undefined}
             {data.iaqi.no2 ? (
-              <li>
+              <li className="air_no2">
                 NO2
                 <span>{data.iaqi.no2.v}</span>
               </li>
-            ) : (
-              undefined
-            )}
+            ) : undefined}
           </div>
         </ul>
       ) : (
-        <h1>Nie ma danych XD</h1>
+        <h1>Nie ma danych</h1>
       )}
     </StyledWrapper>
   );

@@ -5,18 +5,15 @@ import WeatherIcon from "../WeatherIcon/WeatherIcon";
 const StyledUl = styled.ul`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
-  order: 1;
+  height: 100%;
   width: calc(100% / 3);
 
   li {
-    position: relative;
-    border-bottom: 1px solid grey;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 10px 0;
     width: 100%;
     list-style: none;
@@ -26,37 +23,58 @@ const StyledUl = styled.ul`
     }
 
     div {
-      height: 20px;
-      width: 40px;
+      height: 30px;
+      width: 50px;
     }
 
     p {
-      font-size: 12px;
+      font-size: ${({ theme }) => theme.fonts.s};
       &:first-of-type {
-        font-size: 16px;
+        font-size: ${({ theme }) => theme.fonts.m};
         font-weight: bolder;
       }
     }
   }
 
+  /* MEDIA QUERIES */
+
   ${({ theme }) => theme.media.tablet} {
-    margin: 15px 0 0 0;
-    border-top: 2px solid grey;
+    margin: 45px 0 0 0;
     width: 100%;
 
-    order: unset;
+    li {
+      div {
+        height: 50px;
+        width: 70px;
+      }
+
+      p {
+        font-size: ${({ theme }) => theme.fonts.m};
+        &:first-of-type {
+          font-size: ${({ theme }) => theme.fonts.l};
+        }
+      }
+    }
   }
 `;
 
 interface WeatherForecastInterface {
-  forecastData: any;
+  forecastData: {
+    list: Array<{
+      weather: Array<{ icon: string }>;
+      main: {
+        temp: number;
+      };
+      dt_txt: string;
+    }>;
+  };
 }
 
 const WeatherForecast: React.FC<WeatherForecastInterface> = ({
-  forecastData
+  forecastData,
 }) => {
   return (
-    <StyledUl>
+    <StyledUl className="weather__forecast">
       {forecastData
         ? forecastData.list
             .filter((listItem, id) => id % 7 === 0)

@@ -6,7 +6,7 @@ import LoadingCircle from "../LoadingCircle/LoadingCircle";
 import {
   callAPI,
   cleanInput,
-  updateSearchedCityList
+  updateSearchedCityList,
 } from "../../store/actionCreators";
 import { connect } from "react-redux";
 
@@ -24,25 +24,21 @@ const StyledWrapper = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fonts.l};
   cursor: pointer;
   outline: none;
 
   :hover {
-    color: ${({ theme }) => theme.colors.blue};
-  }
-
-  @media (max-width: 340px) {
-    font-size: 14px;
+    color: ${({ theme }) => theme.colors.yellow};
   }
 `;
 
 export interface SearchButtonProps {
   searchedCity: string;
-  handleAPICall: Function;
-  clearInput: Function;
-  fetchingData: Boolean;
-  updateSearchedCityList: Function;
+  handleAPICall: (searchedCity: string, userLocation: any | null) => any;
+  clearInput: () => any;
+  fetchingData: boolean;
+  updateSearchedCityList: (searchedCity: string) => any;
   searchedCityList: Array<String>;
 }
 
@@ -52,9 +48,9 @@ const SearchButton: React.FC<SearchButtonProps> = ({
   fetchingData,
   updateSearchedCityList,
   searchedCity,
-  searchedCityList
+  searchedCityList,
 }) => {
-  const handleSearchClick = e => {
+  const handleSearchClick = (e) => {
     e.preventDefault();
     if (searchedCityList.includes(searchedCity)) {
       alert("Już wyszukałeś pogodę dla Tego miasta.");
@@ -66,21 +62,21 @@ const SearchButton: React.FC<SearchButtonProps> = ({
     }
   };
   return (
-    <StyledWrapper onClick={handleSearchClick}>
+    <StyledWrapper className="search__button" onClick={handleSearchClick}>
       {fetchingData ? <LoadingCircle /> : <FontAwesomeIcon icon={faSearch} />}
     </StyledWrapper>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     searchedCity: state.searchedCity,
     fetchingData: state.fetchingData,
-    searchedCityList: state.searchedCityList
+    searchedCityList: state.searchedCityList,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleAPICall: (searchedCity, userLocation) => {
       searchedCity !== ""
@@ -88,8 +84,8 @@ const mapDispatchToProps = dispatch => {
         : alert("Musisz wpisać nazwę miasta!");
     },
     clearInput: () => dispatch(cleanInput()),
-    updateSearchedCityList: searchedCity =>
-      dispatch(updateSearchedCityList(searchedCity))
+    updateSearchedCityList: (searchedCity) =>
+      dispatch(updateSearchedCityList(searchedCity)),
   };
 };
 

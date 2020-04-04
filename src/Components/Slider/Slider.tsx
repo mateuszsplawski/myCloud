@@ -5,24 +5,99 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { sliderInit } from "./../../store/actionCreators";
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div<{ isSliderInitialized: boolean }>`
+  margin: 25px;
+
   .swiper-wrapper {
-    width: 100%;
-    height: 100%;
-    padding: 0 0 20px 0;
+    padding: 25px 0;
+    width: 1000px;
+    height: 360px;
+  }
+
+  .swiper-button-prev {
+    left: calc(50% - 200px);
+    right: unset;
+
+    ::after {
+      padding: 0 0 0 6px;
+    }
+  }
+
+  .swiper-button-next {
+    right: calc(50% - 200px);
+    left: unset;
+
+    ::after {
+      padding: 0 6px 0 0;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: ${({ isSliderInitialized }) =>
+      isSliderInitialized ? "flex" : "none"};
+    transform: translateY(50%);
+    overflow: hidden;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    bottom: 25px;
+    top: unset;
+    background: ${({ theme }) => theme.colors.yellow};
+    border: 3px solid ${({ theme }) => theme.colors.yellow};
+
+    ::after {
+      color: ${({ theme }) => theme.colors.darkWhite};
+    }
+  }
+
+  ${({ theme }) => theme.media.laptop} {
+    .swiper-wrapper {
+      width: 800px;
+    }
+  }
+
+  ${({ theme }) => theme.media.tablet} {
+    .swiper-wrapper {
+      width: 600px;
+      height: 100%;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none;
+    }
+  }
+
+  ${({ theme }) => theme.media.tabletSmall} {
+    .swiper-wrapper {
+      width: 400px;
+    }
+  }
+
+  ${({ theme }) => theme.media.mobileLarge} {
+    .swiper-wrapper {
+      width: 330px;
+    }
+  }
+
+  ${({ theme }) => theme.media.mobile} {
+    .swiper-wrapper {
+      width: 300px;
+    }
   }
 `;
 
 export interface SliderProps {
-  list: Array<Object>;
-  initializeSlider: Function;
-  isSliderInitialized: Boolean;
+  list: Array<{}>;
+  initializeSlider: () => any;
+  isSliderInitialized: boolean;
 }
 
 const Slider: React.FC<SliderProps> = ({
   list,
   initializeSlider,
-  isSliderInitialized
+  isSliderInitialized,
 }) => {
   useEffect(() => {
     if (list.length > 1 && !isSliderInitialized) {
@@ -31,7 +106,10 @@ const Slider: React.FC<SliderProps> = ({
   }, [list.length]);
 
   return (
-    <StyledWrapper className="swiper-container">
+    <StyledWrapper
+      isSliderInitialized={isSliderInitialized}
+      className="slider swiper-container"
+    >
       <div className="swiper-wrapper">
         {list.length > 0
           ? list.map((listItem, id) => (
@@ -44,23 +122,24 @@ const Slider: React.FC<SliderProps> = ({
             ))
           : undefined}
       </div>
-      <div className="swiper-pagination"></div>
+      <div className="swiper-button-prev"></div>
+      <div className="swiper-button-next"></div>
     </StyledWrapper>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     isSliderInitialized: state.sliderInitialized,
-    list: state.list
+    list: state.list,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     initializeSlider: () => {
       dispatch(sliderInit());
-    }
+    },
   };
 };
 

@@ -25,7 +25,7 @@ const StyledWrapper = styled.div`
 `;
 
 interface WeatherIconInterface {
-  id: String;
+  id: string;
 }
 
 const WeatherIcon: React.FC<WeatherIconInterface> = ({ id }) => {

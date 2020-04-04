@@ -4,91 +4,92 @@ import { connect } from "react-redux";
 import { handleCitySearch } from "../../../store/actionCreators";
 import SearchButton from "../../SearchButton/SearchButton";
 
-const StyledSection = styled.form`
-  display: flex;
+const StyledSection = styled.section`
   width: 500px;
   height: 50px;
-  position: relative;
 
-  input {
-    background: ${({ theme }) => theme.colors.white};
-    width: 100%;
-    color: ${({ theme }) => theme.colors.black};
-    padding: 15px;
-    font-size: 16px;
-    border: 1px solid ${({ theme }) => theme.colors.grey};
-    border-radius: 25px;
-    border-right: none;
-    border-top-right-radius: unset;
-    border-bottom-right-radius: unset;
-    outline: none;
-
-    :valid {
-      border-color: ${({ theme }) => theme.colors.blue};
-      box-shadow: -5px 1px 30px -10px ${({ theme }) => theme.colors.blue};
-      & + button {
-        border-color: ${({ theme }) => theme.colors.blue};
-        box-shadow: 15px 1px 30px -10px ${({ theme }) => theme.colors.blue};
-      }
+  .search {
+    &__form {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
     }
 
-    :focus {
-      border-color: ${({ theme }) => theme.colors.blue};
-      box-shadow: -5px 1px 30px -10px ${({ theme }) => theme.colors.blue};
+    &__input {
+      background: ${({ theme }) => theme.colors.white};
+      width: 100%;
+      color: ${({ theme }) => theme.colors.black};
+      padding: 15px;
+      font-size: ${({ theme }) => theme.fonts.m};
+      border: 1px solid ${({ theme }) => theme.colors.grey};
+      border-radius: 25px;
+      border-right: none;
+      border-top-right-radius: unset;
+      border-bottom-right-radius: unset;
+      outline: none;
 
-      & + button {
-        border-color: ${({ theme }) => theme.colors.blue};
-        box-shadow: 15px 1px 30px -10px ${({ theme }) => theme.colors.blue};
+      :valid {
+        border-color: ${({ theme }) => theme.colors.yellow};
+        & + button {
+          border-color: ${({ theme }) => theme.colors.yellow};
+        }
+      }
+
+      :focus {
+        border-color: ${({ theme }) => theme.colors.yellow};
+
+        & + button {
+          border-color: ${({ theme }) => theme.colors.yellow};
+        }
       }
     }
   }
 
-  @media (max-width: 550px) {
-    width: 100%;
-    padding: 0 20px;
-  }
+  /* MEDIA QUERIES */
 
-  @media (max-width: 340px) {
-    input {
-      font-size: 14px;
-    }
+  ${({ theme }) => theme.media.tabletSmall} {
+    width: 80%;
   }
 `;
 
 interface SearchSectionProps {
-  handleCitySearch: any;
+  handleCitySearch: () => any;
   searchedCity: string;
 }
 
 const SearchSection: React.FC<SearchSectionProps> = ({
   handleCitySearch,
-  searchedCity
+  searchedCity,
 }) => {
   return (
     <>
-      <StyledSection>
-        <input
-          required
-          placeholder="Wpisz nazwę miasta..."
-          value={searchedCity}
-          onChange={handleCitySearch}
-          type="text"
-        />
-        <SearchButton />
+      <StyledSection className="search">
+        <form className="search__form">
+          <input
+            className="search__input"
+            required
+            placeholder="Wpisz nazwę miasta..."
+            value={searchedCity}
+            onChange={handleCitySearch}
+            type="text"
+          />
+          <SearchButton />
+        </form>
       </StyledSection>
     </>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { searchedCity: state.searchedCity };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleCitySearch: e => {
+    handleCitySearch: (e) => {
       dispatch(handleCitySearch(e));
-    }
+    },
   };
 };
 

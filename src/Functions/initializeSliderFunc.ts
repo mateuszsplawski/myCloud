@@ -1,15 +1,18 @@
-import { Mousewheel } from "swiper/js/swiper.esm";
+import { Mousewheel, Navigation } from "swiper/js/swiper.esm";
 import Swiper from "swiper";
 
 const initializeSliderFunc = () => {
-  Swiper.use([Mousewheel]);
+  Swiper.use([Mousewheel, Navigation]);
   const settings = {
     spaceBetween: 100,
     centeredSlides: true,
     speed: 500,
     observer: true,
     resistanceRatio: 0.5,
-    mousewheel: true
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
   };
   const mySwiper = new Swiper(".swiper-container", settings);
 };

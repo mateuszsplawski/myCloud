@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import HeroIcon from "../../../media/HeroIcon";
-import { storeUserLocation, callAPI } from "../../../store/actionCreators";
-import { connect } from "react-redux";
+import HeroButton from "./../../HeroButton/HeroButton";
 
 const StyledSection = styled.section`
   margin-top: 30px;
@@ -10,9 +9,8 @@ const StyledSection = styled.section`
   height: 420px;
   position: relative;
   background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.blue};
   border-radius: 25px;
-  box-shadow: 0px 10px 30px 0px ${({ theme }) => theme.colors.blue};
+  box-shadow: 0px 5px 40px 10px ${({ theme }) => theme.colors.darkBlue};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,13 +26,8 @@ const StyledSection = styled.section`
       justify-content: center;
       text-align: center;
 
-      h1 {
-        font-family: ${({ theme }) => theme.fonts.secondary};
-        font-size: 36px;
-      }
-
       h2 {
-        font-size: 20px;
+        font-size: ${({ theme }) => theme.fonts.l};
         font-weight: lighter;
         margin: 15px 0 0 0;
       }
@@ -55,43 +48,28 @@ const StyledSection = styled.section`
     }
   }
 
-  button {
-    padding: 10px 20px;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    background: ${({ theme }) => theme.colors.yellow};
-    border-radius: 15px;
-    outline: none;
+  ${({ theme }) => theme.media.mobileLarge} {
+    width: 250px;
+    height: 340px;
+
+    .hero {
+      &__description {
+        padding: 0 10px;
+
+        h2 {
+          font-size: ${({ theme }) => theme.fonts.m};
+        }
+      }
+
+      &__image {
+        right: 55px;
+        bottom: -38px;
+      }
+    }
   }
 `;
 
-interface HeroSectionInterface {
-  storeUserLocation: () => any;
-  userLocation: {};
-  callAPI: (searchedCity: string | null, userLocation: {}) => any;
-  fetchingLocationData: boolean;
-}
-
-const HeroSection: React.FC<HeroSectionInterface> = ({
-  storeUserLocation,
-  userLocation,
-  callAPI,
-  fetchingLocationData
-}) => {
-  const handleClick = () => {
-    storeUserLocation();
-  };
-
-  useEffect(() => {
-    if (userLocation) {
-      callAPI(null, userLocation);
-    }
-  }, [fetchingLocationData]);
+const HeroSection: React.FC = () => {
   return (
     <StyledSection className="hero">
       <div className="hero__description">
@@ -104,24 +82,9 @@ const HeroSection: React.FC<HeroSectionInterface> = ({
       <div className="hero__image">
         <HeroIcon />
       </div>
-      <button onClick={handleClick}>Udostępnij lokalizację</button>
+      <HeroButton />
     </StyledSection>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    userLocation: state.userLocation,
-    fetchingLocationData: state.fetchingLocationData
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    storeUserLocation: () => dispatch(storeUserLocation()),
-    callAPI: (searchedCity, userLocation) =>
-      dispatch(callAPI(searchedCity, userLocation))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeroSection);
+export default HeroSection;

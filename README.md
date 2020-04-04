@@ -1,6 +1,6 @@
 # myCloud
 
-myCloud app allows you to search for weather in city of your choice. It also provides weather forecast for five upcoming days.
+myCloud app allows you to search for weather in city of your choice. At the beginning it will ask you for geolocation data of your device. The app provides weather forecast for upcoming days and air pollution data of desired location.
 
 ## Getting Started
 
@@ -8,11 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Live version
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+You can check it out live thanks to Netlify's CD/CI -> [click here](https://myweatherreactapp.netlify.com/).
 
 ### Installing
 
@@ -32,8 +28,10 @@ npm start
 
 - React
 - Redux
+- Redux-promise middleware
 - styled-components
-- swiper]
+- swiper
+- Typescript
 - OpenWeatherAPI
 
 ## Authors

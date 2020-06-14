@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import DisplaySection from "./Sections/DisplaySection/DisplaySection";
-import HeroSection from "./Sections//HeroSection/HeroSection";
 import { connect } from "react-redux";
+
+import DisplaySection from "./Sections/DisplaySection/DisplaySection";
+import HeroSection from "./Sections/HeroSection/HeroSection";
 import Logo from "./Logo/Logo";
-import { ErrorPopup } from "./ErrorPopup/ErrorPopup";
 
 const StyledMain = styled.main`
   display: flex;
@@ -30,9 +30,9 @@ const WeatherApp: React.FC<WeatherAppInterface> = ({ list }) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    list: state.list
+    list: state.list,
   };
 };
 

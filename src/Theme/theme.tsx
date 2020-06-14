@@ -1,4 +1,4 @@
-const theme: Object = {
+export const theme: Object = {
   colors: {
     white: "rgb(255, 255, 255)",
     darkWhite: "rgb(245, 245, 245)",
@@ -28,5 +28,3 @@ const theme: Object = {
     mobile: "@media (max-width: 350px)",
   },
 };
-
-export default theme;

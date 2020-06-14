@@ -1,8 +1,8 @@
 import React from "react";
 
-import { StyledAirPollutionInfo } from "./AirPollutionInfo.styled";
+import { StyledAirPollution } from "./AirPollution.styled";
 
-export interface AirPollutionInfoProps {
+export interface AirPollutionInterface {
   airPollutionData: {
     status: string;
     data: {
@@ -22,12 +22,12 @@ export interface AirPollutionInfoProps {
   };
 }
 
-const AirPollutionInfo: React.FC<AirPollutionInfoProps> = ({
+export const AirPollution: React.FC<AirPollutionInterface> = ({
   airPollutionData,
 }) => {
   const { status, data } = airPollutionData;
   return (
-    <StyledAirPollutionInfo>
+    <StyledAirPollution>
       {status !== "error" ? (
         <ul className="air">
           <li className="air__quality">
@@ -51,8 +51,6 @@ const AirPollutionInfo: React.FC<AirPollutionInfoProps> = ({
       ) : (
         <h1>Nie ma danych</h1>
       )}
-    </StyledAirPollutionInfo>
+    </StyledAirPollution>
   );
 };
-
-export default AirPollutionInfo;

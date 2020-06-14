@@ -1,10 +1,11 @@
 import React from "react";
-import WeatherApp from "./Components/WeatherApp";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import theme from "./Theme/theme";
-import GlobalStyle from "./Theme/GlobalStyle";
-import store from "./store/store";
+
+import WeatherApp from "./components/WeatherApp";
+import theme from "theme/theme";
+import GlobalStyle from "theme/GlobalStyle";
+import store from "store/store";
 
 const App = () => {
   return (

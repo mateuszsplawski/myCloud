@@ -52,7 +52,7 @@ export const ErrorPopup: React.FC<ErrorPopupInterface> = ({ message }) => {
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
 

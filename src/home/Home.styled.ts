@@ -1,9 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import HeroIcon from "assets/HeroIcon";
-import HeroButton from "./../../HeroButton/HeroButton";
 
-const StyledSection = styled.section`
+export const StyledHome = styled.section`
   margin-top: 30px;
   width: 350px;
   height: 420px;
@@ -68,23 +65,3 @@ const StyledSection = styled.section`
     }
   }
 `;
-
-const HeroSection: React.FC = () => {
-  return (
-    <StyledSection className="hero">
-      <div className="hero__description">
-        <h2>
-          Żeby skorzystać z aplikacji, udostępnij swoją lokalizację.
-          <br />
-          Kliknij w przycisk na dole!
-        </h2>
-      </div>
-      <div className="hero__image">
-        <HeroIcon />
-      </div>
-      <HeroButton />
-    </StyledSection>
-  );
-};
-
-export default HeroSection;

@@ -47,11 +47,11 @@ const WeatherIcon: React.FC<WeatherIconInterface> = ({ id }) => {
     { id: "13d", weather: <Weather13d viewbox={"0 5 65 50"} /> },
     { id: "13n", weather: <Weather13n viewbox={"0 5 65 50"} /> },
     { id: "50d", weather: <Weather50d viewbox={"0 5 65 50"} /> },
-    { id: "50n", weather: <Weather50n viewbox={"0 5 65 50"} /> }
+    { id: "50n", weather: <Weather50n viewbox={"0 5 65 50"} /> },
   ];
   return (
     <StyledWrapper>
-      {weatherIcons.filter(weatherIcon => weatherIcon.id === id)[0].weather}
+      {weatherIcons.filter((weatherIcon) => weatherIcon.id === id)[0].weather}
     </StyledWrapper>
   );
 };

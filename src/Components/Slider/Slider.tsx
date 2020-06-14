@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import WeatherCard from "./../WeatherCard/WeatherCard";
+import WeatherCard from "../WeatherCard/WeatherCard";
 import "swiper/css/swiper.min.css";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { sliderInit } from "./../../store/actionCreators";
+import { sliderInit } from "../../store/actionCreators";
 
 const StyledWrapper = styled.div<{ isSliderInitialized: boolean }>`
   margin: 25px;

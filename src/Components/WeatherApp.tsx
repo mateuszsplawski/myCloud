@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import DisplaySection from "./Sections/DisplaySection/DisplaySection";
 import HeroSection from "./Sections/HeroSection/HeroSection";
-import Logo from "./Logo/Logo";
+import { Logo } from "./Logo/Logo";
 
 const StyledMain = styled.main`
   display: flex;

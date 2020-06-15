@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle: Function = createGlobalStyle`
+export const GlobalStyle: Function = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&display=swap&subset=latin-ext');
 @import url("https://fonts.googleapis.com/css?family=Exo:800&display=swap");
 
@@ -16,5 +16,3 @@ body{
     background: linear-gradient(to top, #141e30, #243b55);
 
 }`;
-
-export default GlobalStyle;

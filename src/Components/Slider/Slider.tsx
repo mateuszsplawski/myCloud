@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import WeatherCard from "../WeatherCard/WeatherCard";
-import "swiper/css/swiper.min.css";
+import "features/slider/node_modules/swiper/css/swiper.min.css";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { sliderInit } from "../../store/actionCreators";

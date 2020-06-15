@@ -7,12 +7,14 @@ import { ThemeProvider } from "styled-components";
 import { store } from "./store";
 import { theme } from "theme/theme";
 import { Routes } from "./Routes";
+import { GlobalStyle } from "theme/GlobalStyle";
 
 interface AppInterface {}
 
 export const App: React.FC<AppInterface> = () => {
   return (
     <Provider store={store}>
+      <GlobalStyle />
       <ThemeProvider theme={theme}>
         <StyledApp className="main">
           <Logo />

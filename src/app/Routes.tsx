@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home } from "home/Home";
+import { Home } from "features/home/Home";
 
 export const Routes: React.FC = () => {
   return (

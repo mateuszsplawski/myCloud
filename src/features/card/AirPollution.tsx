@@ -10,14 +10,11 @@ export interface AirPollutionInterface {
         no2: {
           v: number;
         };
-        c: {
-          v: number;
-        };
         co: {
           v: number;
         };
       };
-      aqi: string;
+      aqi: number;
     };
   };
 }
@@ -25,27 +22,36 @@ export interface AirPollutionInterface {
 export const AirPollution: React.FC<AirPollutionInterface> = ({
   airPollutionData,
 }) => {
-  const { status, data } = airPollutionData;
+  const {
+    status,
+    data: {
+      iaqi: {
+        no2: { v: no2Value },
+        co: { v: coValue },
+      },
+      aqi,
+    },
+  } = airPollutionData;
   return (
     <StyledAirPollution>
       {status !== "error" ? (
         <ul className="air">
           <li className="air__quality">
-            Jakość powietrza <span>{data.aqi} AQI</span>
+            Jakość powietrza <span>{aqi} AQI</span>
           </li>
           <div>
-            {data.iaqi.co ? (
+            {coValue && (
               <li className="air__co">
                 CO
-                <span>{data.iaqi.co.v}</span>
+                <span>{coValue}</span>
               </li>
-            ) : undefined}
-            {data.iaqi.no2 ? (
+            )}
+            {no2Value && (
               <li className="air_no2">
                 NO2
-                <span>{data.iaqi.no2.v}</span>
+                <span>{no2Value}</span>
               </li>
-            ) : undefined}
+            )}
           </div>
         </ul>
       ) : (

@@ -1,11 +1,22 @@
 import React from "react";
 import { Button } from "components/Button/Button";
+import { StyledButtonGroup } from "./ButtonGroup.styled";
 
-export const ButtonGroup = () => {
+interface ButtonGroupInterface {
+  handleClick: (cardView: boolean) => any;
+  active: boolean;
+}
+
+export const ButtonGroup: React.FC<ButtonGroupInterface> = ({
+  handleClick,
+  active,
+}) => {
   return (
     <>
-      <Button text={"1"} handleClick={() => undefined} />
-      <Button text={"2"} handleClick={() => undefined} />
+      <StyledButtonGroup active={active}>
+        <Button text={"1"} handleClick={() => handleClick(true)} />
+        <Button text={"2"} handleClick={() => handleClick(false)} />
+      </StyledButtonGroup>
     </>
   );
 };

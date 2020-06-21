@@ -1,22 +1,11 @@
 import React from "react";
 
 import { StyledAirPollution } from "./AirPollution.styled";
+import { airPollutionDataInterface } from "./Card";
+import { constants } from "./constants";
 
 export interface AirPollutionInterface {
-  airPollutionData: {
-    status: string;
-    data: {
-      iaqi: {
-        no2: {
-          v: number;
-        };
-        co: {
-          v: number;
-        };
-      };
-      aqi: number;
-    };
-  };
+  airPollutionData: airPollutionDataInterface;
 }
 
 export const AirPollution: React.FC<AirPollutionInterface> = ({
@@ -31,7 +20,10 @@ export const AirPollution: React.FC<AirPollutionInterface> = ({
       },
       aqi,
     },
-  } = airPollutionData;
+  } =
+    airPollutionData.status !== "error"
+      ? airPollutionData
+      : constants.airPollutionDataDefault;
   return (
     <StyledAirPollution>
       {status !== "error" ? (
@@ -40,18 +32,14 @@ export const AirPollution: React.FC<AirPollutionInterface> = ({
             Jakość powietrza <span>{aqi} AQI</span>
           </li>
           <div>
-            {coValue && (
-              <li className="air__co">
-                CO
-                <span>{coValue}</span>
-              </li>
-            )}
-            {no2Value && (
-              <li className="air_no2">
-                NO2
-                <span>{no2Value}</span>
-              </li>
-            )}
+            <li className="air__co">
+              CO
+              <span>{coValue}</span>
+            </li>
+            <li className="air_no2">
+              NO2
+              <span>{no2Value}</span>
+            </li>
           </div>
         </ul>
       ) : (

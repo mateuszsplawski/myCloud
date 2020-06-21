@@ -1,24 +1,10 @@
 import React from "react";
 
 import { StyledWeatherDetailsList } from "./WeatherDetailsList.styled";
+import { weatherDataInterface } from "./Card";
 
 export interface WeatherDetailsListInterface {
-  weatherData: {
-    main: {
-      feels_like: number;
-      humidity: number;
-      pressure: number;
-      temp_max: number;
-      temp_min: number;
-    };
-    sys: {
-      sunrise: number;
-      sunset: number;
-    };
-    wind: {
-      speed: number;
-    };
-  };
+  weatherData: weatherDataInterface;
 }
 
 export const WeatherDetailsList: React.FC<WeatherDetailsListInterface> = ({
@@ -63,20 +49,20 @@ export const WeatherDetailsList: React.FC<WeatherDetailsListInterface> = ({
     },
     {
       description: "T. max",
-      value: temp_max,
+      value: (temp_max - 273.15).toFixed(),
       unit: "°C",
     },
     {
       description: "T. min",
-      value: temp_min,
+      value: (temp_min - 273.15).toFixed(),
       unit: "°C",
     },
   ];
 
   return (
     <StyledWeatherDetailsList className="weather__info">
-      {weatherDetailsList.map(({ description, value, unit }) => (
-        <li>
+      {weatherDetailsList.map(({ description, value, unit }, id) => (
+        <li key={id}>
           <p>{description}</p>
           <span>
             {value}

@@ -1,6 +1,6 @@
 import React from "react";
 
-import WeatherIcon from "components/WeatherIcon/WeatherIcon";
+import WeatherIcon from "assets/WeatherIcon";
 import { StyledWeatherDescription } from "./WeatherDescription.styled";
 
 export interface WeatherDescriptionInterface {

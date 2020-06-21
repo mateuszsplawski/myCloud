@@ -1,27 +1,27 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { sliderInit } from "store/actionCreators";
 import "swiper/css/swiper.min.css";
 import { StyledSlider } from "./Slider.styled";
-import WeatherCard from "components/WeatherCard/WeatherCard";
+import { updateSliderStatus } from "./duck/sliderDuck";
+import { mountSlider } from "./helpers";
+import Card from "features/card/Card";
 
-export interface SliderProps {
-  list: Array<{}>;
-  initializeSlider: () => any;
+export interface SliderInterface {
   isSliderInitialized: boolean;
+  weatherDataArray: {}[];
+  updateSliderStatus: any;
 }
 
-const Slider: React.FC<SliderProps> = ({
-  list,
-  initializeSlider,
+const Slider: React.FC<SliderInterface> = ({
   isSliderInitialized,
+  weatherDataArray,
+  updateSliderStatus,
 }) => {
   useEffect(() => {
-    if (list.length > 1 && !isSliderInitialized) {
-      initializeSlider();
-    } else return undefined;
-  }, [list.length]);
+    weatherDataArray.length > 1 && !isSliderInitialized && mountSlider();
+    return () => updateSliderStatus();
+  }, [weatherDataArray.length, isSliderInitialized, updateSliderStatus]);
 
   return (
     <StyledSlider
@@ -29,16 +29,15 @@ const Slider: React.FC<SliderProps> = ({
       className="slider swiper-container"
     >
       <div className="swiper-wrapper">
-        {list.length > 0
-          ? list.map((listItem, id) => (
-              <WeatherCard
-                weatherData={listItem[0]}
-                forecastData={listItem[1]}
-                airPollutionData={listItem[2]}
-                key={id}
-              />
-            ))
-          : undefined}
+        {weatherDataArray.length > 0 &&
+          weatherDataArray.map((listItem, id) => (
+            <Card
+              weatherData={listItem[0]}
+              forecastData={listItem[1]}
+              airPollutionData={listItem[2]}
+              key={id}
+            />
+          ))}
       </div>
       <div className="swiper-button-prev"></div>
       <div className="swiper-button-next"></div>
@@ -47,10 +46,10 @@ const Slider: React.FC<SliderProps> = ({
 };
 
 const mapStateToProps = (state) => ({
-  isSliderInitialized: state.sliderInitialized,
-  list: state.list,
+  isSliderInitialized: state.slider.sliderInitialized,
+  weatherDataArray: state.home.weatherDataArray,
 });
 
-const mapDispatchToProps = { sliderInit };
+const mapDispatchToProps = { updateSliderStatus };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Slider);

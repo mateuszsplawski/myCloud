@@ -1,18 +1,11 @@
 import React from "react";
 
 import { StyledWeatherForecastList } from "./WeatherForecastList.styled";
-import WeatherIcon from "components/WeatherIcon/WeatherIcon";
+import WeatherIcon from "assets/WeatherIcon";
+import { forecastDataInterface } from "./Card";
 
 interface WeatherForecastListInterface {
-  forecastData: {
-    list: Array<{
-      weather: Array<{ icon: string }>;
-      main: {
-        temp: number;
-      };
-      dt_txt: string;
-    }>;
-  };
+  forecastData: forecastDataInterface;
 }
 
 export const WeatherForecastList: React.FC<WeatherForecastListInterface> = ({

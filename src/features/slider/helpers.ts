@@ -1,7 +1,7 @@
 import { Mousewheel, Navigation } from "swiper/js/swiper.esm";
 import Swiper from "swiper";
 
-const initializeSliderFunc = () => {
+export const mountSlider = () => {
   Swiper.use([Mousewheel, Navigation]);
   const settings = {
     spaceBetween: 100,
@@ -14,7 +14,5 @@ const initializeSliderFunc = () => {
       prevEl: ".swiper-button-prev",
     },
   };
-  const mySwiper = new Swiper(".swiper-container", settings);
+  new Swiper(".swiper-container", settings);
 };
-
-export default initializeSliderFunc;

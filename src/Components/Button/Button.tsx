@@ -8,5 +8,5 @@ interface ButtonInterface {
 }
 
 export const Button: React.FC<ButtonInterface> = ({ handleClick, text }) => {
-  return <StyledButton onClick={handleClick}>{text}</StyledButton>;
+  return <StyledButton onClick={() => handleClick()}>{text}</StyledButton>;
 };

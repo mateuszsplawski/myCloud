@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledButtons = styled.div<{ active: Boolean }>`
+export const StyledButtonGroup = styled.div<{ active: Boolean }>`
   display: flex;
   position: absolute;
   overflow: hidden;

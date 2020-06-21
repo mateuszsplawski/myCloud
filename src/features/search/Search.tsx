@@ -9,9 +9,13 @@ import { IconButton } from "./IconButton";
 
 interface SearchInterface {
   fetchData: (searchedCity: string) => any;
+  fetchingData: boolean;
 }
 
-export const Search: React.FC<SearchInterface> = ({ fetchData }) => {
+export const Search: React.FC<SearchInterface> = ({
+  fetchData,
+  fetchingData,
+}) => {
   const formik = useFormik({
     initialValues: {
       city: "",
@@ -34,14 +38,19 @@ export const Search: React.FC<SearchInterface> = ({ fetchData }) => {
             onChange={formik.handleChange}
             type={constants.inputType}
           />
-          <IconButton handleClick={formik.handleSubmit} />
+          <IconButton
+            fetchingData={fetchingData}
+            handleClick={formik.handleSubmit}
+          />
         </form>
       </StyledSearch>
     </>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  fetchingData: state.search.fetchingData,
+});
 
 const mapDispatchToProps = {
   fetchData,

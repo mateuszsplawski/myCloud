@@ -13,4 +13,8 @@ export const constants = {
       },
     },
   },
+  buttonText: {
+    first: "Prognoza pogody",
+    second: "Jakość powietrza",
+  },
 };

@@ -5,6 +5,7 @@ import { fetchAPIData } from "./../../../api/helpers";
 const initialState = {
   userLocation: {},
   weatherDataArray: [],
+  fetchingData: false,
 };
 
 // ASYNC ACTION CREATOR
@@ -33,6 +34,10 @@ const homeReducer = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, action) => {
       state.weatherDataArray = [...state.weatherDataArray, action.payload];
+      state.fetchingData = false;
+    });
+    builder.addCase(fetchData.pending, (state, action) => {
+      state.fetchingData = true;
     });
   },
 });

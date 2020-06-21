@@ -7,13 +7,19 @@ import { Button } from "components/Button/Button";
 import { connect } from "react-redux";
 import { fetchData } from "./duck/homeDuck";
 import { Redirect } from "react-router-dom";
+import { LoadingCircle } from "components/LoadingCircle/LoadingCircle";
 
 interface HomeInterface {
   fetchData: () => any;
   weatherDataArray: {}[];
+  fetchingData: boolean;
 }
 
-const Home: React.FC<HomeInterface> = ({ weatherDataArray, fetchData }) => {
+const Home: React.FC<HomeInterface> = ({
+  weatherDataArray,
+  fetchData,
+  fetchingData,
+}) => {
   return (
     <StyledHome className="hero">
       <div className="hero__description">
@@ -26,7 +32,11 @@ const Home: React.FC<HomeInterface> = ({ weatherDataArray, fetchData }) => {
       <div className="hero__image">
         <HeroIcon />
       </div>
-      <Button handleClick={fetchData} text={constants.buttonText} />
+      {!fetchingData ? (
+        <Button handleClick={fetchData} text={constants.buttonText} />
+      ) : (
+        <LoadingCircle />
+      )}
       {weatherDataArray.length > 0 && <Redirect to="/main" />}
     </StyledHome>
   );
@@ -34,6 +44,7 @@ const Home: React.FC<HomeInterface> = ({ weatherDataArray, fetchData }) => {
 
 const mapStateToProps = (state) => ({
   weatherDataArray: state.home.weatherDataArray,
+  fetchingData: state.home.fetchingData,
 });
 
 const mapDispatchToProps = {

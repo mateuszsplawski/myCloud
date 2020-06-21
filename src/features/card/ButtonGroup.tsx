@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "components/Button/Button";
 import { StyledButtonGroup } from "./ButtonGroup.styled";
+import { constants } from "./constants";
 
 interface ButtonGroupInterface {
   handleClick: (cardView: boolean) => any;
@@ -14,8 +15,14 @@ export const ButtonGroup: React.FC<ButtonGroupInterface> = ({
   return (
     <>
       <StyledButtonGroup active={active}>
-        <Button text={"1"} handleClick={() => handleClick(true)} />
-        <Button text={"2"} handleClick={() => handleClick(false)} />
+        <Button
+          text={constants.buttonText.first}
+          handleClick={() => handleClick(true)}
+        />
+        <Button
+          text={constants.buttonText.second}
+          handleClick={() => handleClick(false)}
+        />
       </StyledButtonGroup>
     </>
   );

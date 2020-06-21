@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const StyledSlider = styled.div<{ isSliderInitialized: boolean }>`
+export const StyledSlider = styled.div<{ isSliderMounted: boolean }>`
   margin: 25px;
+  cursor: ${({ isSliderMounted }) => isSliderMounted && "grab"};
 
   .swiper-wrapper {
     padding: 25px 0;
@@ -29,8 +30,7 @@ export const StyledSlider = styled.div<{ isSliderInitialized: boolean }>`
 
   .swiper-button-next,
   .swiper-button-prev {
-    display: ${({ isSliderInitialized }) =>
-      isSliderInitialized ? "flex" : "none"};
+    display: ${({ isSliderMounted }) => (isSliderMounted ? "flex" : "none")};
     transform: translateY(50%);
     overflow: hidden;
     border-radius: 50%;

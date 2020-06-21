@@ -8,24 +8,24 @@ import { mountSlider } from "./helpers";
 import Card from "features/card/Card";
 
 export interface SliderInterface {
-  isSliderInitialized: boolean;
+  isSliderMounted: boolean;
   weatherDataArray: {}[];
   updateSliderStatus: any;
 }
 
 const Slider: React.FC<SliderInterface> = ({
-  isSliderInitialized,
+  isSliderMounted,
   weatherDataArray,
   updateSliderStatus,
 }) => {
   useEffect(() => {
-    weatherDataArray.length > 1 && !isSliderInitialized && mountSlider();
+    weatherDataArray.length > 1 && !isSliderMounted && mountSlider();
     return () => updateSliderStatus();
-  }, [weatherDataArray.length, isSliderInitialized, updateSliderStatus]);
+  }, [weatherDataArray.length, isSliderMounted, updateSliderStatus]);
 
   return (
     <StyledSlider
-      isSliderInitialized={isSliderInitialized}
+      isSliderMounted={isSliderMounted}
       className="slider swiper-container"
     >
       <div className="swiper-wrapper">
@@ -46,7 +46,7 @@ const Slider: React.FC<SliderInterface> = ({
 };
 
 const mapStateToProps = (state) => ({
-  isSliderInitialized: state.slider.sliderInitialized,
+  isSliderMounted: state.slider.isSliderMounted,
   weatherDataArray: state.home.weatherDataArray,
 });
 

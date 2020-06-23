@@ -6,7 +6,9 @@ export const StyledApp = styled.main`
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 100vw;
-  height: 100%;
-  min-height: 100vh;
+  width: 80vw;
+  height: 80vh;
+  background: ${({ theme }) => theme.colors.darkWhite};
+  border-radius: 20px;
+  z-index: 1;
 `;

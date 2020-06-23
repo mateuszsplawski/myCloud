@@ -6,6 +6,8 @@ import { WeatherDetailsList } from "./WeatherDetailsList";
 import { WeatherForecastList } from "./WeatherForecastList";
 import { ButtonGroup } from "./ButtonGroup";
 import { AirPollution } from "./AirPollution";
+import Favourites from "features/favourites/Favourites";
+import { Button } from "components/Button/Button";
 
 export interface weatherDataInterface {
   name: string;
@@ -59,12 +61,14 @@ interface CardInterface {
   weatherData: weatherDataInterface;
   forecastData: forecastDataInterface;
   airPollutionData: airPollutionDataInterface;
+  setFavourite: (payload: string) => void;
 }
 
 export const Card: React.FC<CardInterface> = ({
   weatherData,
   forecastData,
   airPollutionData,
+  setFavourite,
 }) => {
   const [cardView, setCardView] = useState(false);
   const handleClick = () => {
@@ -80,6 +84,10 @@ export const Card: React.FC<CardInterface> = ({
         <AirPollution airPollutionData={airPollutionData} />
       )}
       <ButtonGroup handleClick={handleClick} active={cardView} />
+      <Button
+        text={"Ulubione"}
+        handleClick={() => setFavourite(weatherData.name)}
+      />
     </StyledCard>
   );
 };

@@ -30,10 +30,26 @@ export const fetchData = createAsyncThunk(
 const homeReducer = createSlice({
   name: "homeReducer",
   initialState,
-  reducers: {},
+  reducers: {
+    setFavourite: (state, action) => {
+      const index = state.weatherDataArray
+        .map((weatherDataItem) => weatherDataItem.name)
+        .indexOf(action.payload);
+      state.weatherDataArray[index].favourite = !state.weatherDataArray[index]
+        .favourite;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, action) => {
-      state.weatherDataArray = [...state.weatherDataArray, action.payload];
+      state.weatherDataArray = [
+        {
+          ...action.payload,
+          name: action.payload[0].name,
+          id: state.weatherDataArray.length,
+          favourite: false,
+        },
+        ...state.weatherDataArray,
+      ];
       state.fetchingData = false;
     });
     builder.addCase(fetchData.pending, (state, action) => {
@@ -41,5 +57,7 @@ const homeReducer = createSlice({
     });
   },
 });
+
+export const { setFavourite } = homeReducer.actions;
 
 export default homeReducer.reducer;

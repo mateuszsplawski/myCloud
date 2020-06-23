@@ -4,19 +4,22 @@ import { connect } from "react-redux";
 import "swiper/css/swiper.min.css";
 import { StyledSlider } from "./Slider.styled";
 import { updateSliderStatus } from "./duck/sliderDuck";
+import { setFavourite } from "./../home/duck/homeDuck";
 import { mountSlider } from "./helpers";
 import Card from "features/card/Card";
 
 export interface SliderInterface {
   isSliderMounted: boolean;
-  weatherDataArray: {}[];
+  weatherDataArray: { id: number }[];
   updateSliderStatus: any;
+  setFavourite: (payload: string) => void;
 }
 
 const Slider: React.FC<SliderInterface> = ({
   isSliderMounted,
   weatherDataArray,
   updateSliderStatus,
+  setFavourite,
 }) => {
   useEffect(() => {
     weatherDataArray.length > 1 && !isSliderMounted && mountSlider();
@@ -35,6 +38,7 @@ const Slider: React.FC<SliderInterface> = ({
               weatherData={listItem[0]}
               forecastData={listItem[1]}
               airPollutionData={listItem[2]}
+              setFavourite={setFavourite}
               key={id}
             />
           ))}
@@ -50,6 +54,6 @@ const mapStateToProps = (state) => ({
   weatherDataArray: state.home.weatherDataArray,
 });
 
-const mapDispatchToProps = { updateSliderStatus };
+const mapDispatchToProps = { updateSliderStatus, setFavourite };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Slider);

@@ -13,7 +13,6 @@ export const GlobalStyle: Function = createGlobalStyle`
 
 body{
     overflow-x: hidden;
-    background: linear-gradient(to top, #141e30, #243b55);
     display: flex;
     align-items:center;
     justify-content:center;

@@ -5,6 +5,7 @@ import sliderReducer from "features/slider/duck/sliderDuck";
 import searchReducer from "features/search/duck/searchDuck";
 import cardReducer from "features/card/duck/cardDuck";
 import mainReducer from "features/main/duck/mainDuck";
+import navigationReducer from "features/navigation/duck/navigationDuck";
 
 export const rootReducer = combineReducers({
   home: homeReducer,
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
   search: searchReducer,
   card: cardReducer,
   main: mainReducer,
+  navigation: navigationReducer,
 });

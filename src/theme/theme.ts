@@ -1,7 +1,9 @@
-import { create } from "@storybook/theming/create";
-
 export const theme = {
   colors: {
+    primary: "rgb(230, 230, 230)",
+    primaryLight: "rgb(255,255,255)",
+    primaryDark: "rgb(205, 205, 205)",
+    secondary: "rgb(244, 168, 61)",
     white: "rgb(255, 255, 255)",
     darkWhite: "rgb(245, 245, 245)",
     black: "rgb(0, 0, 0)",
@@ -10,6 +12,7 @@ export const theme = {
     blue: "rgba(102, 160, 232, 1)",
     yellow: "rgb(244, 168, 61)",
     darkBlue: "rgb(36,59,85)",
+    darkBlue2: "rgb(26,49,75)",
   },
   fonts: {
     secondary: `"Exo", sans-serif`,

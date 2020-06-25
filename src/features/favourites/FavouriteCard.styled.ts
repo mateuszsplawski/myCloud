@@ -4,8 +4,9 @@ export const StyledFavouriteCard = styled.li`
   background: ${({ theme }) => theme.colors.darkWhite};
   padding: 20px;
   list-style: none;
-  margin: 0 20px;
-  border-radius: 10px;
+  margin: 10px;
+  width: 100%;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;

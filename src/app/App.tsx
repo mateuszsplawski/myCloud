@@ -1,26 +1,34 @@
 import React from "react";
+import { connect } from "react-redux";
+import { ThemeProvider } from "styled-components";
 
 import { StyledApp } from "./App.styled";
-import { Logo } from "components/Logo/Logo";
-import { Provider } from "react-redux";
-import { ThemeProvider } from "styled-components";
-import { store } from "./store";
 import { theme } from "theme/theme";
 import { Routes } from "./Routes";
 import { GlobalStyle } from "theme/GlobalStyle";
+import Navigation from "features/navigation/Navigation";
+import { darkTheme } from "theme/darkTheme";
 
-interface AppInterface {}
+interface AppInterface {
+  darkMode: boolean;
+}
 
-export const App: React.FC<AppInterface> = () => {
+const App: React.FC<AppInterface> = ({ darkMode }) => {
   return (
-    <Provider store={store}>
+    <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkMode ? darkTheme : theme}>
         <StyledApp className="main">
-          <Logo />
+          <Navigation />
           <Routes />
         </StyledApp>
       </ThemeProvider>
-    </Provider>
+    </>
   );
 };
+
+const mapStateToProps = (state) => ({ darkMode: state.navigation.darkMode });
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

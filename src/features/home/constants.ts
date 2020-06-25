@@ -1,6 +1,6 @@
 export const constants = {
   inputName: "city",
-  description: "Żeby skorzystać z aplikacji, udostępnij swoją lokalizację.",
+  description: "Wyszukaj miasto, lub udostępnij lokalizację!",
   description2: "Kliknij w przycisk na dole!",
-  buttonText: "Udostępnij",
+  buttonText: "Udostępnij lokalizację",
 };

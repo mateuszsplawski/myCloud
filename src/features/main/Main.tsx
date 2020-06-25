@@ -9,14 +9,18 @@ import Favourites from "features/favourites/Favourites";
 
 interface MainInterface {
   weatherDataArray: {}[];
+  favouriteVisible: boolean;
 }
 
-const Main: React.FC<MainInterface> = ({ weatherDataArray }) => {
+const Main: React.FC<MainInterface> = ({
+  weatherDataArray,
+  favouriteVisible,
+}) => {
   return (
     <StyledMain>
       <Search />
       <Slider />
-      <Favourites />
+      {favouriteVisible && <Favourites />}
       {weatherDataArray.length === 0 && <Redirect to="/" />}
     </StyledMain>
   );
@@ -24,6 +28,7 @@ const Main: React.FC<MainInterface> = ({ weatherDataArray }) => {
 
 const mapStateToProps = (state) => ({
   weatherDataArray: state.home.weatherDataArray,
+  favouriteVisible: state.navigation.favouriteVisible,
 });
 
 const mapDispatchToProps = {};

@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { fetchData } from "./duck/homeDuck";
 import { Redirect } from "react-router-dom";
 import { LoadingCircle } from "components/LoadingCircle/LoadingCircle";
+import Search from "features/search/Search";
 
 interface HomeInterface {
   fetchData: () => any;
@@ -23,20 +24,21 @@ const Home: React.FC<HomeInterface> = ({
   return (
     <StyledHome className="hero">
       <div className="hero__description">
-        <h2>
-          {constants.description}
-          <br />
-          {constants.description2}
-        </h2>
+        <h1>{constants.description}</h1>
+      </div>
+      <div className="hero__actions">
+        {!fetchingData ? (
+          <>
+            <Search />
+            <Button handleClick={fetchData} text={constants.buttonText} />
+          </>
+        ) : (
+          <LoadingCircle />
+        )}
       </div>
       <div className="hero__image">
         <HeroIcon />
       </div>
-      {!fetchingData ? (
-        <Button handleClick={fetchData} text={constants.buttonText} />
-      ) : (
-        <LoadingCircle />
-      )}
       {weatherDataArray.length > 0 && <Redirect to="/main" />}
     </StyledHome>
   );

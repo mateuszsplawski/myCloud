@@ -20,7 +20,7 @@ import Weather13n from "assets/svg/13n";
 import Weather50d from "assets/svg/50d";
 import Weather50n from "assets/svg/50n";
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.span`
   width: 100%;
   height: 100%;
 `;

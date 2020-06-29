@@ -6,58 +6,78 @@ export const StyledSlider = styled.div<{ isSliderMounted: boolean }>`
 
   .swiper-wrapper {
     padding: 25px 0;
-    width: 1000px;
-    height: 360px;
+    width: 80vw;
+    height: 80vh;
   }
 
   .swiper-button-prev {
-    left: calc(50% - 200px);
+    left: -22px;
     right: unset;
 
-    ::after {
-      padding: 0 0 0 6px;
+    svg {
+      margin: 0 0 0 20px;
     }
   }
 
   .swiper-button-next {
-    right: calc(50% - 200px);
+    right: -22px;
     left: unset;
 
-    ::after {
-      padding: 0 6px 0 0;
+    svg {
+      margin: 0 20px 0 0;
     }
   }
 
   .swiper-button-next,
   .swiper-button-prev {
-    display: ${({ isSliderMounted }) => (isSliderMounted ? "flex" : "none")};
+    display: ${({ isSliderMounted }) =>
+      isSliderMounted ? "relative" : "none"};
     transform: translateY(50%);
     overflow: hidden;
     border-radius: 50%;
-    width: 34px;
-    height: 34px;
-    bottom: 25px;
+    width: 44px;
+    height: 44px;
+    bottom: 50%;
     top: unset;
-    background: ${({ theme }) => theme.colors.yellow};
-    border: 3px solid ${({ theme }) => theme.colors.yellow};
+    background: ${({ theme }) => theme.colors.primaryLight};
+    border: 3px solid ${({ theme }) => theme.colors.primaryLight};
+    transition: 0.2s;
 
     ::after {
-      color: ${({ theme }) => theme.colors.darkWhite};
+      display: none;
     }
-  }
 
-  ${({ theme }) => theme.media.laptop} {
-    .swiper-wrapper {
-      width: 800px;
+    svg {
+      color: ${({ theme }) => theme.colors.black};
+      font-size: 22px;
+      transition: 0.1s;
+    }
+
+    :hover {
+      width: 52px;
+      height: 52px;
+
+      &.swiper-button-prev {
+        left: -2px;
+        justify-content: center;
+
+        svg {
+          margin: 0;
+        }
+      }
+
+      &.swiper-button-next {
+        right: -2px;
+        justify-content: center;
+
+        svg {
+          margin: 0;
+        }
+      }
     }
   }
 
   ${({ theme }) => theme.media.tablet} {
-    .swiper-wrapper {
-      width: 600px;
-      height: 100%;
-    }
-
     .swiper-button-next,
     .swiper-button-prev {
       display: none;

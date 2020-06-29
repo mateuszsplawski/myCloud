@@ -2,25 +2,26 @@ import styled from "styled-components";
 
 export const StyledWeatherForecastList = styled.ul`
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 100%;
-  width: calc(100% / 3);
+  height: 50%;
+  width: 100%;
 
   li {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 10px 0;
-    width: 100%;
+    width: 25%;
     list-style: none;
 
     &:last-of-type {
       border: none;
     }
 
-    div {
+    span {
       height: 30px;
       width: 50px;
     }

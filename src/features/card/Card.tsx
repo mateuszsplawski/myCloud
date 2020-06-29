@@ -6,8 +6,8 @@ import { WeatherDetailsList } from "./WeatherDetailsList";
 import { WeatherForecastList } from "./WeatherForecastList";
 import { ButtonGroup } from "./ButtonGroup";
 import { AirPollution } from "./AirPollution";
-import Favourites from "features/favourites/Favourites";
 import { Button } from "components/Button/Button";
+import { ActionBar } from "./ActionBar";
 
 export interface weatherDataInterface {
   name: string;
@@ -71,23 +71,22 @@ export const Card: React.FC<CardInterface> = ({
   setFavourite,
 }) => {
   const [cardView, setCardView] = useState(false);
-  const handleClick = () => {
-    setCardView(!cardView);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setCardView(e.target.value);
   };
   return (
     <StyledCard className="weather swiper-slide">
       <WeatherDescription weatherData={weatherData} />
-      <WeatherDetailsList weatherData={weatherData} />
-      {!cardView ? (
-        <WeatherForecastList forecastData={forecastData} />
-      ) : (
-        <AirPollution airPollutionData={airPollutionData} />
-      )}
-      <ButtonGroup handleClick={handleClick} active={cardView} />
-      <Button
-        text={"Ulubione"}
-        handleClick={() => setFavourite(weatherData.name)}
-      />
+      <div className="weather__main">
+        <WeatherDetailsList weatherData={weatherData} />
+        <ButtonGroup handleClick={handleClick} active={cardView} />
+        {!cardView ? (
+          <WeatherForecastList forecastData={forecastData} />
+        ) : (
+          <AirPollution airPollutionData={airPollutionData} />
+        )}
+      </div>
     </StyledCard>
   );
 };

@@ -9,6 +9,7 @@ import { fetchData } from "./duck/homeDuck";
 import { Redirect } from "react-router-dom";
 import { LoadingCircle } from "components/LoadingCircle/LoadingCircle";
 import Search from "features/search/Search";
+import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 
 interface HomeInterface {
   fetchData: () => any;
@@ -30,7 +31,11 @@ const Home: React.FC<HomeInterface> = ({
         {!fetchingData ? (
           <>
             <Search />
-            <Button handleClick={fetchData} text={constants.buttonText} />
+            <Button
+              handleClick={fetchData}
+              text={constants.buttonText}
+              icon={faLocationArrow}
+            />
           </>
         ) : (
           <LoadingCircle />

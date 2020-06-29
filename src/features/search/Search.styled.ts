@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledSearch = styled.section`
   width: 80%;
   height: 50px;
+  max-width: 500px;
 
   .search {
     &__form {

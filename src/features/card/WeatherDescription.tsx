@@ -26,9 +26,11 @@ export const WeatherDescription: React.FC<WeatherDescriptionInterface> = ({
   } = weatherData;
   return (
     <StyledWeatherDescription className="weather__description">
-      <h1>{name}</h1>
-      <h2>{description}</h2>
-      <h3>{(temp - 273.15).toFixed()}°</h3>
+      <div className="weather__text">
+        <h1>{name}</h1>
+        <h2>{description}</h2>
+        <h3>{(temp - 273.15).toFixed()}°</h3>
+      </div>
       <WeatherIcon id={icon} />
     </StyledWeatherDescription>
   );

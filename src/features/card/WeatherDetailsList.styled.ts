@@ -3,16 +3,24 @@ import styled from "styled-components";
 export const StyledWeatherDetailsList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  height: 100%;
-  width: calc(100% / 3);
+  align-items: center;
+  height: 50%;
+  width: 100%;
 
   li {
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    margin: 10px;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.3);
     list-style: none;
+    border-radius: 25px;
     font-weight: bolder;
-    padding: 15px 0;
+    padding: 30px 20px;
     font-size: ${({ theme }) => theme.fonts.m};
 
     p {

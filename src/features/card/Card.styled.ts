@@ -5,14 +5,17 @@ export const StyledCard = styled.div`
   justify-content: space-around;
   align-items: center;
   display: flex;
-  background-color: ${({ theme }) => theme.colors.darkWhite};
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
   border-radius: 25px;
-  padding: 40px;
   width: 100%;
   height: 100%;
 
-  ${({ theme }) => theme.media.tablet} {
-    flex-wrap: wrap;
+  .weather__main {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
   }
 
   ${({ theme }) => theme.media.tabletSmall} {

@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { StyledNavigation } from "./Navigation.styled";
-import { SwitchButton } from "./SwitchButton";
 import { setDarkMode, setFavouriteVisibility } from "./duck/navigationDuck";
 import { Button } from "components/Button/Button";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import Search from "features/search/Search";
 
 // ACTION TYPING
 
@@ -21,13 +21,19 @@ const Navigation: React.FC<NavigationInterface> = ({
   setFavouriteVisibility,
 }) => {
   return (
-    <StyledNavigation>
+    <StyledNavigation className={"navigation"}>
       <Button
         text={"Ulubione"}
         icon={faStar}
         handleClick={setFavouriteVisibility}
       />
-      <SwitchButton handleClick={setDarkMode} active={darkMode} />
+      <Search />
+      <Button
+        text={"Motyw"}
+        name={"navigation__switch"}
+        handleClick={setDarkMode}
+        active={darkMode}
+      />
     </StyledNavigation>
   );
 };

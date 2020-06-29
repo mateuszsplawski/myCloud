@@ -4,8 +4,8 @@ import { Redirect } from "react-router-dom";
 
 import { StyledMain } from "./Main.styled";
 import Slider from "features/slider/Slider";
-import Search from "features/search/Search";
 import Favourites from "features/favourites/Favourites";
+import Navigation from "features/navigation/Navigation";
 
 interface MainInterface {
   weatherDataArray: {}[];
@@ -17,12 +17,14 @@ const Main: React.FC<MainInterface> = ({
   favouriteVisible,
 }) => {
   return (
-    <StyledMain>
-      <Search />
-      <Slider />
-      {favouriteVisible && <Favourites />}
-      {weatherDataArray.length === 0 && <Redirect to="/" />}
-    </StyledMain>
+    <>
+      <Navigation />
+      <StyledMain>
+        <Slider />
+        {favouriteVisible && <Favourites />}
+        {weatherDataArray.length === 0 && <Redirect to="/" />}
+      </StyledMain>
+    </>
   );
 };
 

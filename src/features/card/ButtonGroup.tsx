@@ -4,7 +4,7 @@ import { StyledButtonGroup } from "./ButtonGroup.styled";
 import { constants } from "./constants";
 
 interface ButtonGroupInterface {
-  handleClick: (cardView: boolean) => any;
+  handleClick: (e: any) => any;
   active: boolean;
 }
 
@@ -13,17 +13,17 @@ export const ButtonGroup: React.FC<ButtonGroupInterface> = ({
   active,
 }) => {
   return (
-    <>
-      <StyledButtonGroup active={active}>
-        <Button
-          text={constants.buttonText.first}
-          handleClick={() => handleClick(true)}
-        />
-        <Button
-          text={constants.buttonText.second}
-          handleClick={() => handleClick(false)}
-        />
-      </StyledButtonGroup>
-    </>
+    <StyledButtonGroup active={active}>
+      <Button
+        text={constants.buttonText.first}
+        value={"siema"}
+        handleClick={(e) => handleClick(e)}
+      />
+      <Button
+        text={constants.buttonText.second}
+        value={"siema"}
+        handleClick={(e) => handleClick(e)}
+      />
+    </StyledButtonGroup>
   );
 };

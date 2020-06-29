@@ -7,6 +7,8 @@ import { updateSliderStatus } from "./duck/sliderDuck";
 import { setFavourite } from "./../home/duck/homeDuck";
 import { mountSlider } from "./helpers";
 import Card from "features/card/Card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export interface SliderInterface {
   isSliderMounted: boolean;
@@ -43,8 +45,12 @@ const Slider: React.FC<SliderInterface> = ({
             />
           ))}
       </div>
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
+      <div className="swiper-button-prev">
+        <FontAwesomeIcon icon={faArrowLeft} />
+      </div>
+      <div className="swiper-button-next">
+        <FontAwesomeIcon icon={faArrowRight} />
+      </div>
     </StyledSlider>
   );
 };

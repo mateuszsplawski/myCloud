@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const StyledAirPollution = styled.div`
-  width: calc(100% / 3);
+  height: 50%;
+  width: calc((100% / 3) * 2);
   display: flex;
   align-items: center;
   flex-direction: column;

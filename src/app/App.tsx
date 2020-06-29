@@ -6,7 +6,6 @@ import { StyledApp } from "./App.styled";
 import { theme } from "theme/theme";
 import { Routes } from "./Routes";
 import { GlobalStyle } from "theme/GlobalStyle";
-import Navigation from "features/navigation/Navigation";
 import { darkTheme } from "theme/darkTheme";
 
 interface AppInterface {
@@ -19,7 +18,6 @@ const App: React.FC<AppInterface> = ({ darkMode }) => {
       <GlobalStyle />
       <ThemeProvider theme={darkMode ? darkTheme : theme}>
         <StyledApp className="main">
-          <Navigation />
           <Routes />
         </StyledApp>
       </ThemeProvider>

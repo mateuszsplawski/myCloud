@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { StyledNavigation } from "./Navigation.styled";
 import { setDarkMode, setFavouriteVisibility } from "./duck/navigationDuck";
 import { Button } from "components/Button/Button";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import Search from "features/search/Search";
 
 // ACTION TYPING
@@ -33,6 +33,7 @@ const Navigation: React.FC<NavigationInterface> = ({
         name={"navigation__switch"}
         handleClick={setDarkMode}
         active={darkMode}
+        icon={darkMode ? faMoon : faSun}
       />
     </StyledNavigation>
   );

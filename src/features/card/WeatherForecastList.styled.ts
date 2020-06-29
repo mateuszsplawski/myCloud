@@ -1,11 +1,20 @@
 import styled from "styled-components";
 
-export const StyledWeatherForecastList = styled.ul`
+export const StyledWeatherForecastList = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 50%;
   width: 100%;
+
+  ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 
   li {
     display: flex;

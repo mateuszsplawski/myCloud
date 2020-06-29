@@ -70,18 +70,12 @@ export const Card: React.FC<CardInterface> = ({
   airPollutionData,
   setFavourite,
 }) => {
-  const [cardView, setCardView] = useState(false);
-  const handleClick = (e) => {
-    e.preventDefault();
-    setCardView(e.target.value);
-  };
   return (
     <StyledCard className="weather swiper-slide">
       <WeatherDescription weatherData={weatherData} />
       <div className="weather__main">
         <WeatherDetailsList weatherData={weatherData} />
-        <ButtonGroup handleClick={handleClick} active={cardView} />
-        {!cardView ? (
+        {true ? (
           <WeatherForecastList forecastData={forecastData} />
         ) : (
           <AirPollution airPollutionData={airPollutionData} />

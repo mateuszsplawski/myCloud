@@ -1,15 +1,15 @@
 import React from "react";
+import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 import HeroIcon from "assets/HeroIcon";
 import { StyledHome } from "./Home.styled";
 import { constants } from "./constants";
 import { Button } from "components/Button/Button";
-import { connect } from "react-redux";
 import { fetchData } from "./duck/homeDuck";
-import { Redirect } from "react-router-dom";
 import { LoadingCircle } from "components/LoadingCircle/LoadingCircle";
 import Search from "features/search/Search";
-import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 
 interface HomeInterface {
   fetchData: () => any;

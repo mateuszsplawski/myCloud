@@ -1,4 +1,5 @@
 import React from "react";
+
 import { StyledSwitchButton } from "./SwitchButton.styled";
 
 interface SwitchButtonInterface {

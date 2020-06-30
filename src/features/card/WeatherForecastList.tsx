@@ -40,10 +40,9 @@ export const WeatherForecastList: React.FC<WeatherForecastListInterface> = ({
         weekDays.indexOf(currentDayView)
     );
     setCurrentDayData(currentData);
-  }, [currentDayView, forecastData.list, weekDays]);
+  }, [currentDayView]);
   return (
     <StyledWeatherForecastList className="weather__forecast">
-      {console.log(currentDayData)}
       <ButtonGroup
         active={currentDayView}
         handleClick={setCurrentDayView}

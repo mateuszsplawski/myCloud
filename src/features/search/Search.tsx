@@ -1,28 +1,49 @@
 import React from "react";
+import { connect } from "react-redux";
+import { useFormik } from "formik";
 
 import { StyledSearch } from "./Search.styled";
-import { useFormik } from "formik";
 import { constants } from "./constants";
 import { fetchData } from "./../home/duck/homeDuck";
-import { connect } from "react-redux";
+import { setErrorStatus } from "./../modal/duck/modalDuck";
 import { IconButton } from "./IconButton";
 
 interface SearchInterface {
   fetchData: (searchedCity: string) => any;
   fetchingData: boolean;
+  weatherDataArray: {}[];
+  setErrorStatus: ({ status: boolean, message: string }) => void;
 }
 
 export const Search: React.FC<SearchInterface> = ({
   fetchData,
   fetchingData,
+  weatherDataArray,
+  setErrorStatus,
 }) => {
+  const cityArray = weatherDataArray.map((weatherData: { name: string }) =>
+    weatherData.name.toLowerCase()
+  );
   const formik = useFormik({
     initialValues: {
       city: "",
     },
     onSubmit: ({ city }, { resetForm }) => {
-      fetchData(city);
-      resetForm();
+      if (cityArray.includes(city.toLowerCase())) {
+        setErrorStatus({
+          status: true,
+          message: "Szukane miasto jest już na liście.",
+        });
+        resetForm();
+      } else if (city === "") {
+        setErrorStatus({
+          status: true,
+          message: "Musisz wpisać nazwę szukanego miasta.",
+        });
+      } else {
+        fetchData(city);
+        resetForm();
+      }
     },
   });
   return (
@@ -50,10 +71,12 @@ export const Search: React.FC<SearchInterface> = ({
 
 const mapStateToProps = (state) => ({
   fetchingData: state.search.fetchingData,
+  weatherDataArray: state.home.weatherDataArray,
 });
 
 const mapDispatchToProps = {
   fetchData,
+  setErrorStatus,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -24,8 +24,10 @@ const Slider: React.FC<SliderInterface> = ({
   setFavourite,
 }) => {
   useEffect(() => {
-    weatherDataArray.length > 1 && !isSliderMounted && mountSlider();
-    return () => updateSliderStatus();
+    if (weatherDataArray.length > 1 && !isSliderMounted) {
+      mountSlider();
+      updateSliderStatus();
+    } else return undefined;
   }, [weatherDataArray.length, isSliderMounted, updateSliderStatus]);
 
   return (

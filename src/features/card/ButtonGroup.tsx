@@ -16,12 +16,12 @@ export const ButtonGroup: React.FC<ButtonGroupInterface> = ({
 }) => {
   return (
     <StyledButtonGroup>
-      {console.log(active)}
       {dateList.map((date) => (
         <Button
           key={date}
           text={date}
           value={date}
+          active={active === date}
           handleClick={(e) => handleClick(e.target.value)}
         />
       ))}

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 interface ButtonInterface {
-  handleClick: (param?: any) => any;
+  handleClick: any;
   text?: string;
   icon?: IconDefinition;
   value?: string;

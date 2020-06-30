@@ -9,11 +9,13 @@ export const StyledWeatherForecastList = styled.section`
   width: 100%;
 
   ul {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 60%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-radius: 25px;
+    background: ${({ theme }) => theme.colors.primaryLight};
   }
 
   li {

@@ -13,6 +13,7 @@ export const theme = {
     yellow: "rgb(244, 168, 61)",
     darkBlue: "rgb(36,59,85)",
     darkBlue2: "rgb(26,49,75)",
+    warning: "rgb(244, 68, 54)",
   },
   fonts: {
     secondary: `"Exo", sans-serif`,

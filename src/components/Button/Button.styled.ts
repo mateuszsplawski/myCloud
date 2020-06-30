@@ -10,21 +10,22 @@ export const StyledButton = styled.button<{ active: boolean }>`
   text-transform: uppercase;
   font-size: ${({ theme }) => theme.fonts.s};
   border: 1px solid transparent;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, active }) =>
+    active ? theme.colors.black : theme.colors.white};
   font-weight: bold;
-  background: ${({ theme }) => theme.colors.secondary};
-  box-shadow: 0px 10px 15px -10px ${({ theme }) => theme.colors.secondary};
-  border-radius: 25px;
+  background: ${({ theme, active }) =>
+    active ? theme.colors.primaryLight : theme.colors.secondary};
+  border-radius: ${({ active }) => (active ? "25px 25px 0 0" : "25px")};
   outline: none;
-  transition: background 0.1s;
+  transition: background 0.1s, border-radius 0.1s, color 0.1s;
 
   svg {
     margin: 0 0 0 10px;
   }
 
   :hover {
-    background: ${({ theme }) => theme.colors.primary};
-    border: 1px solid ${({ theme }) => theme.colors.secondary};
+    background: ${({ theme }) => theme.colors.primaryLight};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   .navigation__switch {

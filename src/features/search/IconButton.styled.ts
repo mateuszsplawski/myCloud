@@ -14,11 +14,11 @@ export const StyledIconButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: ${({ theme }) => theme.fonts.l};
+  font-size: ${({ theme }) => theme.fonts.m};
   cursor: pointer;
   outline: none;
 
   :hover {
-    color: ${({ theme }) => theme.colors.yellow};
+    color: ${({ theme }) => theme.colors.secondary};
   }
 `;

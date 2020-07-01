@@ -13,12 +13,14 @@ interface NavigationInterface {
   setDarkMode: any;
   darkMode: boolean;
   setFavouriteVisibility: any;
+  favouriteVisible: boolean;
 }
 
 const Navigation: React.FC<NavigationInterface> = ({
   setDarkMode,
   darkMode,
   setFavouriteVisibility,
+  favouriteVisible,
 }) => {
   return (
     <StyledNavigation className={"navigation"}>
@@ -26,6 +28,7 @@ const Navigation: React.FC<NavigationInterface> = ({
         text={"Ulubione"}
         icon={faStar}
         handleClick={setFavouriteVisibility}
+        active={favouriteVisible}
       />
       <Search />
       <Button
@@ -41,6 +44,7 @@ const Navigation: React.FC<NavigationInterface> = ({
 
 const mapStateToProps = (state) => ({
   darkMode: state.navigation.darkMode,
+  favouriteVisible: state.navigation.favouriteVisible,
 });
 
 const mapDispatchToProps = { setDarkMode, setFavouriteVisibility };

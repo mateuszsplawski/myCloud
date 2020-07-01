@@ -52,6 +52,11 @@ const homeReducer = createSlice({
       state.weatherDataArray[index].favourite = !state.weatherDataArray[index]
         .favourite;
     },
+    removeItem: (state, action) => {
+      state.weatherDataArray = state.weatherDataArray.filter(
+        (weatherDataItem) => weatherDataItem.name !== action.payload
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, action) => {
@@ -74,6 +79,6 @@ const homeReducer = createSlice({
   },
 });
 
-export const { setFavourite } = homeReducer.actions;
+export const { setFavourite, removeItem } = homeReducer.actions;
 
 export default homeReducer.reducer;

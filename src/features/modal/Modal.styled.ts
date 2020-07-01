@@ -15,25 +15,27 @@ export const StyledModal = styled.section`
   div {
     background: ${({ theme }) => theme.colors.primaryLight};
     border-radius: 25px;
-    width: 50vw;
-    height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 40px;
 
     header {
-      margin: 20px 0;
-      border-radius: 25px;
+      border-radius: 20px;
       background: ${({ theme }) => theme.colors.warning};
       padding: 10px 20px;
-      text-transform: uppercase;
-      color: ${({ theme }) => theme.colors.primaryLight};
-      font-weight: bolder;
-      font-size: ${({ theme }) => theme.fonts.m};
+
+      h1 {
+        text-transform: uppercase;
+        color: ${({ theme }) => theme.colors.primaryLight};
+        font-weight: bolder;
+        font-size: ${({ theme }) => theme.fonts.m};
+      }
     }
 
     p {
+      margin: 30px 0;
       font-size: ${({ theme }) => theme.fonts.l};
     }
   }

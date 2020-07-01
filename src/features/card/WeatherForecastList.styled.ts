@@ -7,10 +7,11 @@ export const StyledWeatherForecastList = styled.section`
   align-items: center;
   height: 50%;
   width: 100%;
+  padding: 40px;
 
   ul {
-    width: 80%;
-    height: 60%;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -22,10 +23,7 @@ export const StyledWeatherForecastList = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px 0;
-    width: 25%;
+    justify-content: space-around;
     list-style: none;
 
     &:last-of-type {
@@ -35,12 +33,13 @@ export const StyledWeatherForecastList = styled.section`
     span {
       height: 30px;
       width: 50px;
+      margin: 0 0 10px 0;
     }
 
     p {
       font-size: ${({ theme }) => theme.fonts.s};
       &:first-of-type {
-        font-size: ${({ theme }) => theme.fonts.m};
+        font-size: ${({ theme }) => theme.fonts.l};
         font-weight: bolder;
       }
     }

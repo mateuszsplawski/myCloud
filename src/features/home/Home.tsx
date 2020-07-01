@@ -32,6 +32,7 @@ const Home: React.FC<HomeInterface> = ({
           <>
             <Search />
             <Button
+              secondary
               handleClick={fetchData}
               text={constants.buttonText}
               icon={faLocationArrow}

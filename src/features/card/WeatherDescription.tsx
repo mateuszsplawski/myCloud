@@ -2,6 +2,7 @@ import React from "react";
 
 import WeatherIcon from "assets/WeatherIcon";
 import { StyledWeatherDescription } from "./WeatherDescription.styled";
+import ActionBar from "./ActionBar";
 
 export interface WeatherDescriptionInterface {
   weatherData: {
@@ -32,6 +33,7 @@ export const WeatherDescription: React.FC<WeatherDescriptionInterface> = ({
         <h3>{(temp - 273.15).toFixed()}°</h3>
       </div>
       <WeatherIcon id={icon} />
+      <ActionBar name={name} />
     </StyledWeatherDescription>
   );
 };

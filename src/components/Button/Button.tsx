@@ -11,6 +11,9 @@ interface ButtonInterface {
   value?: string;
   active?: boolean;
   name?: string;
+  secondary?: boolean;
+  warning?: boolean;
+  list?: boolean;
 }
 
 export const Button: React.FC<ButtonInterface> = ({
@@ -20,9 +23,15 @@ export const Button: React.FC<ButtonInterface> = ({
   value,
   active,
   name,
+  secondary,
+  warning,
+  list,
 }) => {
   return (
     <StyledButton
+      list={list}
+      warning={warning}
+      secondary={secondary}
       className={name}
       active={active}
       value={value}

@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const StyledActionBar = styled.nav`
-  width: 100%;
-  height: 30px;
-  border-radius: 0 25px 0 0;
-  background: ${({ theme }) => theme.colors.primaryDark};
+  margin: 0 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 110px;
 `;

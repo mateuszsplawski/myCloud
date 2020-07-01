@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledSearch = styled.section`
   width: 80%;
-  height: 50px;
+  height: 40px;
   max-width: 500px;
 
   .search {
@@ -17,10 +17,10 @@ export const StyledSearch = styled.section`
       background: ${({ theme }) => theme.colors.white};
       width: 100%;
       color: ${({ theme }) => theme.colors.black};
-      padding: 15px;
+      padding: 10px 20px;
       font-size: ${({ theme }) => theme.fonts.m};
       border: 1px solid ${({ theme }) => theme.colors.grey};
-      border-radius: 25px;
+      border-radius: 20px;
       border-right: none;
       border-top-right-radius: unset;
       border-bottom-right-radius: unset;

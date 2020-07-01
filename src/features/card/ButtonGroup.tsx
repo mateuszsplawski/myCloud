@@ -18,6 +18,7 @@ export const ButtonGroup: React.FC<ButtonGroupInterface> = ({
     <StyledButtonGroup>
       {dateList.map((date) => (
         <Button
+          list
           key={date}
           text={date}
           value={date}

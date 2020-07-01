@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 export const StyledFavourites = styled.section`
   position: absolute;
-  top: 80px;
-  left: 20px;
-  height: 80%;
-  width: 300px;
+  bottom: 0;
+  transform: translateX(-50%);
+  left: 50%;
+  height: 30vh;
+  width: 50vw;
   overflow: hidden;
   padding: 10px;
   background: ${({ theme }) => theme.colors.primaryLight};
   box-shadow: 0px 0px 15px -5px ${({ theme }) => theme.colors.black};
-  border-radius: 25px;
+  border-radius: 25px 25px 0 0;
   z-index: 2;
   overflow: scroll;
 

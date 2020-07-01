@@ -23,7 +23,8 @@ const Modal: React.FC<ModalInterface> = ({ errorMessage, setErrorStatus }) => {
         </header>
         <p>{errorMessage}</p>
         <Button
-          text={"Spróbuj ponownie"}
+          secondary
+          text={"Zamknij okno"}
           handleClick={() => setErrorStatus({ status: false })}
         />
       </div>

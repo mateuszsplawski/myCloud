@@ -37,7 +37,7 @@ export const StyledHome = styled.section`
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      height: 120px;
+      height: 90px;
     }
 
     &__image {

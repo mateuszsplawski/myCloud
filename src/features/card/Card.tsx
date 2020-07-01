@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { StyledCard } from "./Card.styled";
 import { WeatherDescription } from "./WeatherDescription";
 import { WeatherDetailsList } from "./WeatherDetailsList";
 import { WeatherForecastList } from "./WeatherForecastList";
-import { ButtonGroup } from "./ButtonGroup";
 import { AirPollution } from "./AirPollution";
-import { Button } from "components/Button/Button";
-import { ActionBar } from "./ActionBar";
 
 export interface weatherDataInterface {
   name: string;
@@ -61,14 +58,12 @@ interface CardInterface {
   weatherData: weatherDataInterface;
   forecastData: forecastDataInterface;
   airPollutionData: airPollutionDataInterface;
-  setFavourite: (payload: string) => void;
 }
 
 export const Card: React.FC<CardInterface> = ({
   weatherData,
   forecastData,
   airPollutionData,
-  setFavourite,
 }) => {
   return (
     <StyledCard className="weather swiper-slide">

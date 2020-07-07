@@ -27,10 +27,10 @@ export const theme = {
     // 14 22 14 60 26 20 16 28 32 12
   },
   media: {
-    laptop: "@media (max-width: 1024px)",
-    tablet: "@media (max-width: 800px)",
-    tabletSmall: "@media (max-width: 620px)",
-    mobileLarge: "@media (max-width: 425px)",
-    mobile: "@media (max-width: 350px)",
+    m1: "@media (max-width: 1230px)",
+    m2: "@media (max-width: 850px)",
+    m3: "@media (max-width: 620px)",
+    m4: "@media (max-width: 425px)",
+    m5: "@media (max-width: 350px)",
   },
 };

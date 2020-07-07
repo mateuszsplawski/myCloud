@@ -11,4 +11,10 @@ export const StyledButtonGroup = styled.div`
       border: none;
     }
   }
+
+  ${({ theme }) => theme.media.m2} {
+    width: 100%;
+    border-radius: unset;
+    overflow: scroll;
+  }
 `;

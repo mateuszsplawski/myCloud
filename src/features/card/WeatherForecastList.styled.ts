@@ -45,24 +45,26 @@ export const StyledWeatherForecastList = styled.section`
     }
   }
 
-  /* MEDIA QUERIES */
-
-  ${({ theme }) => theme.media.tablet} {
-    margin: 45px 0 0 0;
-    width: 100%;
+  ${({ theme }) => theme.media.m1} {
+    margin: 0 0 30px 0;
 
     li {
-      div {
-        height: 50px;
-        width: 70px;
-      }
+      padding: 30px 10px;
+    }
+  }
 
-      p {
-        font-size: ${({ theme }) => theme.fonts.m};
-        &:first-of-type {
-          font-size: ${({ theme }) => theme.fonts.l};
-        }
-      }
+  ${({ theme }) => theme.media.m2} {
+    padding: 40px 0 0 0;
+    margin: unset;
+
+    ul {
+      border-radius: unset;
+      overflow: scroll;
+      justify-content: unset;
+    }
+
+    li {
+      padding: 40px 20px;
     }
   }
 `;

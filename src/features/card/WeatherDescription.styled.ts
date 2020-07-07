@@ -7,7 +7,7 @@ export const StyledWeatherDescription = styled.div`
   align-items: center;
   text-align: center;
   height: 100%;
-  width: calc(100% / 3);
+  width: 500px;
   border-radius: 25px 0 0 25px;
   background: ${({ theme }) => theme.colors.darkBlue};
   color: ${({ theme }) => theme.colors.white};
@@ -45,13 +45,38 @@ export const StyledWeatherDescription = styled.div`
     width: 100%;
   }
 
-  /* MEDIA QUERIES */
+  ${({ theme }) => theme.media.m1} {
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+    flex-direction: row;
+    height: 250px;
 
-  ${({ theme }) => theme.media.tablet} {
-    width: 50%;
+    span {
+      height: 250px;
+      width: 200px;
+
+      svg {
+        transform: scale(1.3);
+        margin: 30px 0 0 0;
+      }
+    }
   }
 
-  ${({ theme }) => theme.media.tabletSmall} {
-    width: 100%;
+  ${({ theme }) => theme.media.m2} {
+    flex-wrap: wrap;
+    height: 400px;
+
+    .weather__text {
+      width: 50%;
+    }
+
+    span {
+      width: 50%;
+
+      svg {
+        margin: unset;
+        transform: unset;
+      }
+    }
   }
 `;

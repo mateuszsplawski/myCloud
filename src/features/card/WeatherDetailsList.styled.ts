@@ -7,6 +7,7 @@ export const StyledWeatherDetailsList = styled.ul`
   align-items: center;
   height: 50%;
   width: 100%;
+  padding: 30px 0 0 0;
 
   li {
     display: flex;
@@ -20,8 +21,27 @@ export const StyledWeatherDetailsList = styled.ul`
     list-style: none;
     border-radius: 25px;
     font-weight: bolder;
-    padding: 30px 20px;
-    font-size: ${({ theme }) => theme.fonts.m};
+    padding: 25px 5px;
+    font-size: ${({ theme }) => theme.fonts.l};
+
+    div {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: ${({ theme }) => theme.colors.primaryLight};
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        font-size: ${({ theme }) => theme.fonts.m};
+        color: ${({ theme }) => theme.colors.secondary};
+      }
+    }
 
     p {
       text-transform: uppercase;
@@ -31,15 +51,10 @@ export const StyledWeatherDetailsList = styled.ul`
     }
   }
 
-  /* MEDIA QUERIES */
-
-  ${({ theme }) => theme.media.tablet} {
-    width: 50%;
-  }
-
-  ${({ theme }) => theme.media.tabletSmall} {
-    width: 100%;
-    margin: 50px 0 0 0;
-    text-align: center;
+  ${({ theme }) => theme.media.m2} {
+    li {
+      width: 40%;
+      margin: 20px 10px;
+    }
   }
 `;

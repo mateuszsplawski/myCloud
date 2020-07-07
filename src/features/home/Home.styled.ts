@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledHome = styled.section`
-  margin-top: 30px;
   width: 350px;
   height: 550px;
   position: relative;
@@ -54,23 +53,9 @@ export const StyledHome = styled.section`
     }
   }
 
-  ${({ theme }) => theme.media.mobileLarge} {
-    width: 250px;
-    height: 340px;
+  /* MEDIA QUERIES */
 
-    .hero {
-      &__description {
-        padding: 0 10px;
-
-        h2 {
-          font-size: ${({ theme }) => theme.fonts.m};
-        }
-      }
-
-      &__image {
-        right: 55px;
-        bottom: -38px;
-      }
-    }
+  ${({ theme }) => theme.media.m4} {
+    width: 95%;
   }
 `;

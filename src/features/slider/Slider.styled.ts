@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const StyledSlider = styled.div<{ isSliderMounted: boolean }>`
-  margin: 25px;
+  margin: 50px;
   cursor: ${({ isSliderMounted }) => isSliderMounted && "grab"};
 
   .swiper-wrapper {
+    margin: 25px 0 0 0;
     padding: 25px 0;
-    width: 80vw;
-    height: 80vh;
+    width: 85vw;
+    height: 85vh;
   }
 
   .swiper-button-prev {
@@ -77,28 +78,9 @@ export const StyledSlider = styled.div<{ isSliderMounted: boolean }>`
     }
   }
 
-  ${({ theme }) => theme.media.tablet} {
-    .swiper-button-next,
-    .swiper-button-prev {
-      display: none;
-    }
-  }
-
-  ${({ theme }) => theme.media.tabletSmall} {
+  ${({ theme }) => theme.media.m1} {
     .swiper-wrapper {
-      width: 400px;
-    }
-  }
-
-  ${({ theme }) => theme.media.mobileLarge} {
-    .swiper-wrapper {
-      width: 330px;
-    }
-  }
-
-  ${({ theme }) => theme.media.mobile} {
-    .swiper-wrapper {
-      width: 300px;
+      height: 100%;
     }
   }
 `;

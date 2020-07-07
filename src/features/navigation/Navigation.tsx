@@ -1,10 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
+import {
+  faSun,
+  faMoon,
+  faClipboardList,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { StyledNavigation } from "./Navigation.styled";
 import { setDarkMode, setFavouriteVisibility } from "./duck/navigationDuck";
 import { Button } from "components/Button/Button";
-import { faStar, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import Search from "features/search/Search";
 
 // ACTION TYPING
@@ -14,6 +18,7 @@ interface NavigationInterface {
   darkMode: boolean;
   setFavouriteVisibility: any;
   favouriteVisible: boolean;
+  favouriteArrayLength: number;
 }
 
 const Navigation: React.FC<NavigationInterface> = ({
@@ -21,20 +26,22 @@ const Navigation: React.FC<NavigationInterface> = ({
   darkMode,
   setFavouriteVisibility,
   favouriteVisible,
+  favouriteArrayLength,
 }) => {
   return (
     <StyledNavigation className={"navigation"}>
       <Button
         text={"Ulubione"}
-        icon={faStar}
-        handleClick={setFavouriteVisibility}
+        icon={faClipboardList}
+        handleClick={() => setFavouriteVisibility()}
         active={favouriteVisible}
+        badge={favouriteArrayLength}
       />
       <Search />
       <Button
         text={"Motyw"}
         name={"navigation__switch"}
-        handleClick={setDarkMode}
+        handleClick={() => setDarkMode()}
         active={darkMode}
         icon={darkMode ? faMoon : faSun}
       />
@@ -45,6 +52,9 @@ const Navigation: React.FC<NavigationInterface> = ({
 const mapStateToProps = (state) => ({
   darkMode: state.navigation.darkMode,
   favouriteVisible: state.navigation.favouriteVisible,
+  favouriteArrayLength: state.home.weatherDataArray.filter(
+    (weatherDataItem) => weatherDataItem.favourite === true
+  ).length,
 });
 
 const mapDispatchToProps = { setDarkMode, setFavouriteVisibility };

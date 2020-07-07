@@ -14,6 +14,7 @@ interface ButtonInterface {
   secondary?: boolean;
   warning?: boolean;
   list?: boolean;
+  badge?: string | number;
 }
 
 export const Button: React.FC<ButtonInterface> = ({
@@ -26,19 +27,23 @@ export const Button: React.FC<ButtonInterface> = ({
   secondary,
   warning,
   list,
+  badge,
 }) => {
   return (
     <StyledButton
+      badge={badge}
       list={list}
       warning={warning}
       secondary={secondary}
       className={name}
       active={active}
       value={value}
+      text={text}
       onClick={(param) => handleClick(param)}
     >
       {text}
       {icon && <FontAwesomeIcon icon={icon} />}
+      {(badge || badge === 0) && <span>{badge}</span>}
     </StyledButton>
   );
 };

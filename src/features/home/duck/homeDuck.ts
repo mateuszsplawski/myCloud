@@ -1,5 +1,11 @@
+import { getGeolocation } from "./../helpers";
 import { setErrorStatus } from "features/modal/duck/modalDuck";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  ThunkDispatch,
+  AnyAction,
+} from "@reduxjs/toolkit";
 
 import { fetchAPIData } from "./../../../api/helpers";
 
@@ -12,21 +18,31 @@ const initialState = {
 // ASYNC ACTION CREATOR
 export const fetchData = createAsyncThunk(
   "homeReducer/fetchData",
-  async (searchedCity: string | undefined, { dispatch }) => {
+  async (
+    searchedCity: string | undefined,
+    thunkAPI: {
+      dispatch: ThunkDispatch<any, any, AnyAction>;
+      getState: () => any;
+    }
+  ) => {
+    const { dispatch, getState } = thunkAPI;
+    const nameArray = getState().home.weatherDataArray.map(
+      (weatherDataItem) => weatherDataItem.name
+    );
+
     if (typeof searchedCity !== "string") {
-      const response = new Promise<{
-        coords: { longitude: number; latitude: number };
-      }>((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject, {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 5000,
-        });
-      }).then(({ coords }) => fetchAPIData(coords));
-      return response;
+      return getGeolocation();
     } else
       return fetchAPIData(searchedCity).then((data) => {
-        if (data[0].cod === 200) {
+        if (data[0].cod === 200 && nameArray.includes(data[0].name)) {
+          dispatch(
+            setErrorStatus({
+              status: true,
+              message: "Szukane miasto jest już na liście.",
+            })
+          );
+          return undefined;
+        } else if (data[0].cod === 200) {
           return data;
         } else {
           dispatch(

@@ -5,15 +5,18 @@ export const StyledButton = styled.button<{
   secondary: boolean;
   warning: boolean;
   list: boolean;
+  badge: string | number;
+  text: string;
 }>`
   all: "unset";
-  padding: 10px 20px;
-  height: 40px;
+  padding: ${({ text }) => text && "10px 20px"};
+  height: ${({ text }) => (text ? "40px" : "50px")};
+  width: ${({ text }) => !text && "50px"};
   cursor: pointer;
   position: relative;
   z-index: 2;
   text-transform: uppercase;
-  font-size: ${({ theme }) => theme.fonts.s};
+  font-size: ${({ theme, text }) => (text ? theme.fonts.s : theme.fonts.m)};
   border: 1px solid transparent;
   color: ${({ theme, active }) =>
     active ? theme.colors.black : theme.colors.white};
@@ -24,13 +27,13 @@ export const StyledButton = styled.button<{
       : active
       ? theme.colors.primaryLight
       : theme.colors.secondary};
-  border-radius: ${({ active, list }) =>
-    list && active ? "20px 20px 0 0" : "20px"};
+  border-radius: ${({ active, list, text }) =>
+    text ? (list && active ? "20px 20px 0 0" : "20px") : "50%"};
   outline: none;
   transition: background 0.1s, border-radius 0.1s, color 0.1s, border 0.1s;
 
   svg {
-    margin: 0 0 0 10px;
+    margin: ${({ text }) => text && "0 0 0 10px"};
     font-size: ${({ theme }) => theme.fonts.m};
   }
 
@@ -44,6 +47,23 @@ export const StyledButton = styled.button<{
       color: ${({ theme, warning }) =>
         warning ? theme.colors.warning : theme.colors.secondary};
     }
+  }
+
+  span {
+    content: ${({ badge }) => (badge !== 0 ? badge : 0)};
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translate(50%, -50%);
+    right: 0;
+    background: ${({ theme }) => theme.colors.primaryLight};
+    color: black;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .navigation__switch {

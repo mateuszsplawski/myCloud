@@ -14,13 +14,15 @@ export const FavouriteCard: React.FC<FavouriteCardInterface> = ({
   const {
     name,
     main: { temp },
+    weather: [{ description, icon }],
   } = weatherData;
   return (
     <StyledFavouriteCard>
-      <h1>{name}</h1>
+      <WeatherIcon id={icon} />
+      <h2>{(temp - 273.15).toFixed()}°</h2>
       <div>
-        <h2>{(temp - 273.15).toFixed()}°</h2>
-        <WeatherIcon id={"04d"} />
+        <h1>{name}</h1>
+        <p>{description}</p>
       </div>
     </StyledFavouriteCard>
   );

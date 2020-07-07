@@ -7,7 +7,6 @@ export const StyledFavourites = styled.section`
   left: 50%;
   height: 30vh;
   width: 50vw;
-  overflow: hidden;
   padding: 10px;
   background: ${({ theme }) => theme.colors.primaryLight};
   box-shadow: 0px 0px 15px -5px ${({ theme }) => theme.colors.black};
@@ -19,5 +18,11 @@ export const StyledFavourites = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  button {
+    position: fixed;
+    top: 0;
+    right: 0;
   }
 `;

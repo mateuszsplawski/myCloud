@@ -10,6 +10,7 @@ import { StyledNavigation } from "./Navigation.styled";
 import { setDarkMode, setFavouriteVisibility } from "./duck/navigationDuck";
 import { Button } from "components/Button/Button";
 import Search from "features/search/Search";
+import { useWindowSize } from "./helpers";
 
 // ACTION TYPING
 
@@ -28,22 +29,23 @@ const Navigation: React.FC<NavigationInterface> = ({
   favouriteVisible,
   favouriteArrayLength,
 }) => {
+  const size = useWindowSize();
   return (
     <StyledNavigation className={"navigation"}>
       <Button
-        text={"Ulubione"}
-        icon={faClipboardList}
-        handleClick={() => setFavouriteVisibility()}
-        active={favouriteVisible}
-        badge={favouriteArrayLength}
-      />
-      <Search />
-      <Button
-        text={"Motyw"}
+        text={size.width > 1000 && "Motyw"}
         name={"navigation__switch"}
         handleClick={() => setDarkMode()}
         active={darkMode}
         icon={darkMode ? faMoon : faSun}
+      />
+      <Search />
+      <Button
+        text={size.width > 1000 && "Ulubione"}
+        icon={faClipboardList}
+        handleClick={() => setFavouriteVisibility()}
+        active={favouriteVisible}
+        badge={favouriteArrayLength}
       />
     </StyledNavigation>
   );

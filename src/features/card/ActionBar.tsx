@@ -30,12 +30,12 @@ const ActionBar: React.FC<ActionBarInterface> = ({
         active={isFavourite}
         icon={faStar}
       />
-      <Button
+      {/* <Button
         handleClick={() => removeItem(name)}
         text={"Usuń z listy"}
         warning
         icon={faBackspace}
-      />
+      /> */}
     </StyledActionBar>
   );
 };

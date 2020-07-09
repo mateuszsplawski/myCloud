@@ -34,4 +34,14 @@ export const StyledFavouriteCard = styled.li`
     justify-content: space-around;
     align-items: center;
   }
+
+  ${({ theme }) => theme.media.m3} {
+    div {
+      flex-direction: column;
+
+      p {
+        text-align: center;
+      }
+    }
+  }
 `;

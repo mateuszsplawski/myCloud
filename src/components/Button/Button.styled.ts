@@ -10,8 +10,8 @@ export const StyledButton = styled.button<{
 }>`
   all: "unset";
   padding: ${({ text }) => text && "10px 20px"};
-  height: ${({ text }) => (text ? "40px" : "50px")};
-  width: ${({ text }) => !text && "50px"};
+  height: 40px;
+  width: ${({ text }) => !text && "40px"};
   cursor: pointer;
   position: relative;
   z-index: 2;

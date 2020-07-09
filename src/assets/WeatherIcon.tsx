@@ -23,6 +23,14 @@ import Weather50n from "assets/svg/50n";
 const StyledWrapper = styled.span`
   width: 100%;
   height: 100%;
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
 `;
 
 interface WeatherIconInterface {

@@ -6,8 +6,6 @@ export const StyledNavigation = styled.nav`
   justify-content: space-around;
   width: 100%;
   height: 60px;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   padding: 0 10vw;
 `;

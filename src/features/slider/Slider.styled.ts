@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledSlider = styled.div<{ isSliderMounted: boolean }>`
-  margin: 50px;
   cursor: ${({ isSliderMounted }) => isSliderMounted && "grab"};
 
   .swiper-wrapper {

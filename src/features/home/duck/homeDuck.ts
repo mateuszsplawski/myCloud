@@ -31,6 +31,15 @@ export const fetchData = createAsyncThunk(
     );
 
     if (typeof searchedCity !== "string") {
+      getGeolocation().then((data) =>
+        dispatch(
+          setUserLocation({
+            lat: data[0].coord.lat,
+            lon: data[0].coord.lon,
+            name: data[0].name,
+          })
+        )
+      );
       return getGeolocation();
     } else
       return fetchAPIData(searchedCity).then((data) => {
@@ -73,6 +82,9 @@ const homeReducer = createSlice({
         (weatherDataItem) => weatherDataItem.name !== action.payload
       );
     },
+    setUserLocation: (state, action) => {
+      state.userLocation = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchData.fulfilled, (state, action) => {
@@ -95,6 +107,10 @@ const homeReducer = createSlice({
   },
 });
 
-export const { setFavourite, removeItem } = homeReducer.actions;
+export const {
+  setFavourite,
+  removeItem,
+  setUserLocation,
+} = homeReducer.actions;
 
 export default homeReducer.reducer;

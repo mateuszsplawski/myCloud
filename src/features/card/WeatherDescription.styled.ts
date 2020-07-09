@@ -54,11 +54,6 @@ export const StyledWeatherDescription = styled.div`
     span {
       height: 250px;
       width: 200px;
-
-      svg {
-        transform: scale(1.3);
-        margin: 30px 0 0 0;
-      }
     }
   }
 
@@ -72,11 +67,19 @@ export const StyledWeatherDescription = styled.div`
 
     span {
       width: 50%;
+    }
+  }
 
-      svg {
-        margin: unset;
-        transform: unset;
-      }
+  ${({ theme }) => theme.media.m3} {
+    flex-direction: column;
+    height: 100%;
+
+    .weather__text {
+      width: 100%;
+    }
+
+    span {
+      width: 100%;
     }
   }
 `;

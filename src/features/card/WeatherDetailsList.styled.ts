@@ -57,4 +57,14 @@ export const StyledWeatherDetailsList = styled.ul`
       margin: 20px 10px;
     }
   }
+
+  ${({ theme }) => theme.media.m4} {
+    li {
+      font-size: ${({ theme }) => theme.fonts.m};
+
+      p {
+        font-size: ${({ theme }) => theme.fonts.xs};
+      }
+    }
+  }
 `;

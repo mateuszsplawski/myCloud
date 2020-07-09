@@ -29,8 +29,7 @@ export const theme = {
   media: {
     m1: "@media (max-width: 1230px)",
     m2: "@media (max-width: 850px)",
-    m3: "@media (max-width: 620px)",
-    m4: "@media (max-width: 425px)",
-    m5: "@media (max-width: 350px)",
+    m3: "@media (max-width: 600px)",
+    m4: "@media (max-width: 400px)",
   },
 };

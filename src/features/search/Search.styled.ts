@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSearch = styled.section`
+  all: unset;
   width: 80%;
   height: 40px;
   max-width: 500px;
@@ -14,7 +15,7 @@ export const StyledSearch = styled.section`
     }
 
     &__input {
-      background: ${({ theme }) => theme.colors.white};
+      background: ${({ theme }) => theme.colors.primaryLight};
       width: 100%;
       color: ${({ theme }) => theme.colors.black};
       padding: 10px 20px;

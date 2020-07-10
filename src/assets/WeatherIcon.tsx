@@ -31,6 +31,12 @@ const StyledWrapper = styled.span`
     left: 50%;
     transform: translate(-50%, -50%) scale(1.5);
   }
+
+  ${({ theme }) => theme.media.m3} {
+    svg {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
 `;
 
 interface WeatherIconInterface {

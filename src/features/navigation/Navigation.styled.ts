@@ -8,4 +8,9 @@ export const StyledNavigation = styled.nav`
   height: 60px;
   position: relative;
   padding: 0 10vw;
+
+  ${({ theme }) => theme.media.m3} {
+    justify-content: space-between;
+    padding: 0 2vw;
+  }
 `;

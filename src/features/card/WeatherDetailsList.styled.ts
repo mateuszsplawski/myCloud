@@ -23,6 +23,7 @@ export const StyledWeatherDetailsList = styled.ul`
     font-weight: bolder;
     padding: 25px 5px;
     font-size: ${({ theme }) => theme.fonts.l};
+    position: relative;
 
     div {
       position: absolute;

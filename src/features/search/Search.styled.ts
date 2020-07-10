@@ -16,6 +16,7 @@ export const StyledSearch = styled.section`
 
     &__input {
       background: ${({ theme }) => theme.colors.primaryLight};
+      -webkit-appearance: none;
       width: 100%;
       color: ${({ theme }) => theme.colors.black};
       padding: 10px 20px;

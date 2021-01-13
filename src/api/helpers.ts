@@ -2,7 +2,8 @@ type coords = { latitude: number; longitude: number };
 
 export const fetchAPIData = (searchedCity: string | coords) => {
   // KEYS
-  const weatherKey = process.env.REACT_APP_WEATHER_KEY;
+  const weatherKey =
+    process.env.REACT_APP_WEATHER_KEY || "852bef2232b1fa115bee70b5c83d1bb2";
   const airPollutionKey = process.env.REACT_APP_AIR_POLLUTION_KEY;
 
   // LANGUAGE
